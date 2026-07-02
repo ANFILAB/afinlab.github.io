@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AFINLAB — Semillero de Finanzas</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,700;1,300;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --g900:#1B5E3F; --g800:#2E7D4E; --g700:#41AB5D; --g500:#5DC86C;
+  --g300:#8FD99A; --g100:#C8F0CF; --g50:#E8F8EB;
+  --cream:#F5F4EF; --cream2:#EAE9E3; --white:#FFFFFF;
+  --t900:#0A2820; --t600:#3D6B5C; --t400:#7BA898; --t200:#B8D4CC;
+  --fd:'Fraunces',Georgia,serif; --fb:'DM Sans',system-ui,sans-serif;
+  --r4:4px; --r8:8px; --r12:12px; --r16:16px; --r24:24px; --rpill:9999px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--cream);color:var(--t900);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:60px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;
+  background:rgba(27,94,63,0.97);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(93,202,165,0.12);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.nav-logo-box{
+  width:32px;height:32px;background:var(--g300);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-logo-box svg{width:18px;height:18px;}
+.nav-brand{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--white);letter-spacing:.04em;}
+
+/* TOP TABS */
+.nav-tabs{display:flex;gap:2px;background:rgba(255,255,255,0.05);border-radius:var(--rpill);padding:3px;}
+.nav-tab{
+  padding:7px 18px;border-radius:var(--rpill);font-size:13px;font-weight:400;
+  color:rgba(255,255,255,0.55);cursor:pointer;border:none;background:transparent;
+  transition:all .2s;white-space:nowrap;
+}
+.nav-tab:hover{color:rgba(255,255,255,0.85);}
+.nav-tab.active{background:var(--g700);color:var(--white);font-weight:500;}
+.nav-cta{
+  background:var(--g300);color:var(--g800);font-family:var(--fb);
+  font-size:13px;font-weight:500;padding:8px 18px;border-radius:var(--rpill);
+  border:none;cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.nav-cta:hover{background:#7DD9B8;transform:translateY(-1px);}
+
+/* ── PAGES WRAPPER ── */
+.page{display:none;padding-top:60px;min-height:100vh;animation:fadeIn .3s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* ── HERO PAGE ── */
+#page-inicio{background:var(--g700);padding-top:60px;}
+.hero{
+  min-height:auto;
+  display:flex;align-items:center;
+  padding:60px 40px 40px 40px;position:relative;overflow:hidden;
+}
+.hero-orb1{position:absolute;right:-100px;top:-100px;width:480px;height:480px;border-radius:50%;background:rgba(93,202,165,0.07);pointer-events:none;}
+.hero-orb2{position:absolute;right:220px;bottom:-80px;width:240px;height:240px;border-radius:50%;background:rgba(29,158,117,0.09);pointer-events:none;}
+.hero-grid{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(93,202,165,0.1);border:1px solid rgba(93,202,165,0.2);
+  border-radius:var(--rpill);padding:5px 14px;font-size:11px;font-weight:500;
+  color:var(--g300);letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;
+}
+.hero-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--g300);}
+.hero-title{font-family:var(--fd);font-size:clamp(34px,4.5vw,54px);font-weight:300;color:var(--white);line-height:1.15;margin-bottom:18px;}
+.hero-title em{font-style:italic;color:var(--g100);}
+.hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:32px;max-width:400px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;}
+.btn-mint{background:var(--g300);color:var(--g800);font-family:var(--fb);font-size:14px;font-weight:500;padding:13px 28px;border-radius:var(--rpill);border:none;cursor:pointer;transition:all .2s;}
+.btn-mint:hover{background:#7DD9B8;transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.65);font-family:var(--fb);font-size:14px;font-weight:300;padding:12px 28px;border-radius:var(--rpill);border:1px solid rgba(255,255,255,0.18);cursor:pointer;transition:all .2s;}
+.btn-ghost:hover{border-color:var(--g300);color:var(--g300);}
+.pillars{display:flex;gap:10px;flex-wrap:wrap;}
+.pilar{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid rgba(93,202,165,0.18);border-radius:var(--r8);background:rgba(255,255,255,0.04);}
+.pilar-dot{width:7px;height:7px;border-radius:50%;background:var(--g300);}
+.pilar span{font-size:11px;font-weight:500;color:rgba(255,255,255,0.65);letter-spacing:.09em;text-transform:uppercase;}
+
+/* stat cards */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.scard{background:rgba(255,255,255,0.05);border:1px solid rgba(93,202,165,0.14);border-radius:var(--r16);padding:24px 20px;transition:border-color .2s;}
+.scard:hover{border-color:rgba(93,202,165,0.38);}
+.scard.wide{grid-column:1/-1;background:var(--g300);border-color:var(--g300);}
+.scard-num{font-family:var(--fd);font-size:38px;font-weight:700;color:var(--g300);line-height:1;margin-bottom:6px;}
+.scard.wide .scard-num{color:var(--g800);}
+.scard-lbl{font-size:13px;font-weight:300;color:rgba(255,255,255,0.55);}
+.scard.wide .scard-lbl{color:rgba(15,61,48,0.65);}
+
+/* ── NUEVA SECCIÓN MVP (Misión, Visión, Propósito) ── */
+.mvp-section{
+  background:var(--cream);
+  padding:56px 40px;
+}
+.mvp-inner{
+  max-width:1100px;
+  margin:0 auto;
+}
+.mvp-label{
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--g700);
+  margin-bottom:10px;
+  text-align:center;
+}
+.mvp-title{
+  font-family:var(--fd);
+  font-size:clamp(24px,3vw,36px);
+  font-weight:300;
+  color:var(--g800);
+  margin-bottom:48px;
+  text-align:center;
+}
+.mvp-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+.mvp-card{
+  background:var(--white);
+  border:1px solid var(--cream2);
+  border-radius:var(--r16);
+  padding:32px 28px;
+  transition:all .25s;
+  box-shadow:0 4px 12px rgba(0,0,0,0.02);
+}
+.mvp-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 20px 40px rgba(65,171,93,0.08);
+  border-color:var(--g100);
+}
+.mvp-icon{
+  width:56px;
+  height:56px;
+  background:var(--g50);
+  border-radius:var(--r12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:24px;
+}
+.mvp-icon svg{
+  width:28px;
+  height:28px;
+  stroke:var(--g700);
+  fill:none;
+  stroke-width:1.8;
+}
+.mvp-card-title{
+  font-family:var(--fd);
+  font-size:20px;
+  font-weight:500;
+  color:var(--g800);
+  margin-bottom:16px;
+}
+.mvp-card-text{
+  font-size:14px;
+  font-weight:300;
+  color:var(--t600);
+  line-height:1.65;
+}
+
+/* projects overview strip (se mantiene pero ahora en pestaña Proyectos) */
+.projects-strip{
+  background:var(--g900);
+  padding:56px 40px;
+}
+.ps-inner{
+  max-width:1100px;
+  margin:0 auto;
+}
+.ps-label{
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--g300);
+  margin-bottom:10px;
+}
+.ps-title{
+  font-family:var(--fd);
+  font-size:clamp(24px,3vw,36px);
+  font-weight:300;
+  color:var(--white);
+  margin-bottom:40px;
+}
+.ps-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.ps-card{
+  border:1px solid rgba(93,202,165,0.12);
+  border-radius:var(--r12);
+  padding:22px 18px;
+  background:rgba(255,255,255,0.04);
+  cursor:pointer;
+  transition:all .25s;
+}
+.ps-card:hover{
+  border-color:rgba(93,202,165,0.35);
+  background:rgba(93,202,165,0.06);
+  transform:translateY(-3px);
+}
+.ps-num{
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--g300);
+  margin-bottom:10px;
+}
+.ps-name{
+  font-size:14px;
+  font-weight:500;
+  color:var(--white);
+  margin-bottom:6px;
+  line-height:1.3;
+}
+.ps-desc{
+  font-size:12px;
+  font-weight:300;
+  color:rgba(255,255,255,0.45);
+  line-height:1.55;
+}
+
+/* ── SHARED SECTION STYLES ── */
+.sec{padding:64px 40px;}
+.sec-inner{max-width:1100px;margin:0 auto;}
+.sec-label{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--g500);margin-bottom:10px;}
+.sec-title{font-family:var(--fd);font-size:clamp(26px,3.5vw,38px);font-weight:300;color:var(--g800);line-height:1.2;margin-bottom:12px;}
+.sec-desc{font-size:15px;font-weight:300;color:var(--t600);line-height:1.7;max-width:540px;margin-bottom:48px;}
+
+/* ── PAPERS PAGE ── */
+#page-papers{background:var(--cream);}
+.papers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;}
+.paper-card{
+  background:var(--white);border:1px solid var(--cream2);border-radius:var(--r16);
+  overflow:hidden;transition:all .25s;
+}
+.paper-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(15,61,48,0.09);}
+.paper-img{
+  height:160px;background:linear-gradient(135deg,var(--g800),var(--g500));
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+}
+.paper-img-pattern{
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,rgba(93,202,165,0.08) 0,rgba(93,202,165,0.08) 1px,transparent 0,transparent 50%);
+  background-size:14px 14px;
+}
+.paper-img-icon{position:relative;z-index:1;}
+.paper-img-icon svg{width:48px;height:48px;stroke:rgba(255,255,255,0.5);fill:none;stroke-width:1.2;}
+.paper-body{padding:24px;}
+.paper-tag{display:inline-block;background:var(--g50);color:var(--g700);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:var(--rpill);margin-bottom:12px;}
+.paper-title{font-family:var(--fd);font-size:17px;font-weight:500;color:var(--g800);line-height:1.35;margin-bottom:8px;}
+.paper-authors{font-size:12px;font-weight:300;color:var(--t400);margin-bottom:12px;}
+.paper-summary{font-size:13px;font-weight:300;color:var(--t600);line-height:1.65;margin-bottom:20px;}
+.paper-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-sm-solid{background:var(--g700);color:var(--white);font-size:12px;font-weight:500;padding:8px 16px;border-radius:var(--rpill);border:none;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;}
+.btn-sm-solid:hover{background:var(--g500);}
+.btn-sm-outline{background:transparent;color:var(--g700);font-size:12px;font-weight:400;padding:7px 16px;border-radius:var(--rpill);border:1px solid var(--g100);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;}
+.btn-sm-outline:hover{border-color:var(--g700);background:var(--g50);}
+.btn-sm-solid svg,.btn-sm-outline svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;}
+
+/* ── BASE DE DATOS PAGE ── */
+#page-datos{background:var(--cream);}
+.empresa-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;}
+.emp-tab{
+  padding:8px 18px;border-radius:var(--rpill);font-size:13px;font-weight:400;
+  color:var(--t600);cursor:pointer;border:1px solid var(--cream2);background:var(--white);
+  transition:all .2s;
+}
+.emp-tab:hover{border-color:var(--g300);color:var(--g700);}
+.emp-tab.active{background:var(--g800);color:var(--white);border-color:var(--g800);}
+.empresa-panel{display:none;}
+.empresa-panel.active{display:block;}
+.empresa-header{
+  background:var(--g800);border-radius:var(--r16);padding:28px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:24px;flex-wrap:wrap;gap:16px;
+}
+.emp-name{font-family:var(--fd);font-size:24px;font-weight:500;color:var(--white);}
+.emp-sector{font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);margin-top:4px;}
+.emp-kpis{display:flex;gap:24px;flex-wrap:wrap;}
+.kpi{text-align:right;}
+.kpi-val{font-family:var(--fd);font-size:22px;font-weight:500;color:var(--g300);}
+.kpi-lbl{font-size:11px;font-weight:300;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:.06em;}
+.charts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.chart-card{background:var(--white);border:1px solid var(--cream2);border-radius:var(--r12);padding:24px;}
+.chart-title{font-size:13px;font-weight:500;color:var(--g800);margin-bottom:4px;}
+.chart-sub{font-size:11px;font-weight:300;color:var(--t400);margin-bottom:20px;}
+.chart-wrap{position:relative;height:200px;}
+
+/* ── LEARNING LAB PAGE ── */
+#page-learning{background:var(--cream);}
+.ll-empresa-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;}
+.ll-tab{
+  padding:8px 18px;border-radius:var(--rpill);font-size:13px;font-weight:400;
+  color:var(--t600);cursor:pointer;border:1px solid var(--cream2);background:var(--white);
+  transition:all .2s;
+}
+.ll-tab:hover{border-color:var(--g300);color:var(--g700);}
+.ll-tab.active{background:var(--g700);color:var(--white);border-color:var(--g700);}
+.ll-panel{display:none;}
+.ll-panel.active{display:block;}
+.ll-section-title{font-family:var(--fd);font-size:20px;font-weight:500;color:var(--g800);margin-bottom:20px;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;}
+.stat-box{background:var(--white);border:1px solid var(--cream2);border-radius:var(--r12);padding:20px 16px;text-align:center;}
+.stat-box-val{font-family:var(--fd);font-size:26px;font-weight:500;color:var(--g700);margin-bottom:4px;}
+.stat-box-lbl{font-size:11px;font-weight:300;color:var(--t400);text-transform:uppercase;letter-spacing:.07em;}
+.ll-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+.ll-chart-card{background:var(--white);border:1px solid var(--cream2);border-radius:var(--r12);padding:24px;}
+.ll-chart-title{font-size:13px;font-weight:500;color:var(--g800);margin-bottom:16px;}
+.ll-chart-wrap{height:220px;position:relative;}
+.interpretation{background:var(--g50);border:1px solid var(--g100);border-radius:var(--r12);padding:20px 24px;}
+.interp-title{font-size:13px;font-weight:500;color:var(--g700);margin-bottom:8px;}
+.interp-text{font-size:13px;font-weight:300;color:var(--t600);line-height:1.7;}
+
+/* ── OTROS PAGE ── */
+#page-otros{background:var(--cream);}
+.otros-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.otro-card{background:var(--white);border:1px solid var(--cream2);border-radius:var(--r16);padding:32px 28px;transition:all .25s;}
+.otro-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(15,61,48,0.07);}
+.otro-icon{width:48px;height:48px;background:var(--g50);border-radius:var(--r8);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.otro-icon svg{width:24px;height:24px;stroke:var(--g700);fill:none;stroke-width:1.5;}
+.otro-num{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g300);margin-bottom:8px;}
+.otro-name{font-family:var(--fd);font-size:20px;font-weight:500;color:var(--g800);margin-bottom:10px;}
+.otro-desc{font-size:14px;font-weight:300;color:var(--t600);line-height:1.65;}
+.otro-tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;}
+.tag-chip{background:var(--g50);color:var(--g700);font-size:11px;padding:4px 10px;border-radius:var(--rpill);}
+
+/* ── CONVOCATORIA PAGE ── */
+#page-unete{background:var(--cream);}
+.conv-hero{background:var(--g800);border-radius:var(--r24);padding:64px 56px;margin-bottom:40px;position:relative;overflow:hidden;}
+.conv-orb{position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:rgba(93,202,165,0.08);pointer-events:none;}
+.conv-title{font-family:var(--fd);font-size:clamp(28px,4vw,44px);font-weight:300;color:var(--white);line-height:1.2;margin-bottom:14px;}
+.conv-title em{font-style:italic;color:var(--g300);}
+.conv-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.7;max-width:480px;margin-bottom:28px;}
+.bens{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:480px;margin-bottom:36px;}
+.ben{display:flex;align-items:flex-start;gap:10px;font-size:14px;font-weight:300;color:rgba(255,255,255,0.7);}
+.ben::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g300);flex-shrink:0;margin-top:5px;}
+.conv-form-sec{background:var(--white);border:1px solid var(--cream2);border-radius:var(--r16);padding:40px;}
+.form-title{font-family:var(--fd);font-size:22px;font-weight:500;color:var(--g800);margin-bottom:6px;}
+.form-sub{font-size:14px;font-weight:300;color:var(--t400);margin-bottom:28px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group.full{grid-column:1/-1;}
+.form-label{font-size:12px;font-weight:500;color:var(--t600);letter-spacing:.04em;}
+.form-input{
+  background:var(--cream);border:1px solid var(--cream2);border-radius:var(--r8);
+  padding:11px 14px;font-size:14px;font-family:var(--fb);color:var(--t900);
+  transition:border-color .2s;outline:none;
+}
+.form-input:focus{border-color:var(--g500);background:var(--white);}
+.form-submit{background:var(--g700);color:var(--white);font-family:var(--fb);font-size:14px;font-weight:500;padding:13px 32px;border-radius:var(--rpill);border:none;cursor:pointer;transition:all .2s;margin-top:8px;}
+.form-submit:hover{background:var(--g500);transform:translateY(-1px);}
+
+/* ── FOOTER ── */
+footer{background:var(--g900);padding:40px;text-align:center;}
+.footer-brand{font-family:var(--fd);font-size:20px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.footer-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,0.35);}
+.footer-handle{font-size:12px;font-weight:400;color:var(--g300);margin-top:6px;}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;}
+  .stat-grid{display:none;}
+  .mvp-grid{grid-template-columns:1fr;}
+  .ps-grid{grid-template-columns:1fr 1fr;}
+  .charts-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .ll-charts{grid-template-columns:1fr;}
+  .otros-grid{grid-template-columns:1fr;}
+  .bens{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  nav{padding:0 16px;}
+  .nav-tabs{gap:1px;}
+  .nav-tab{padding:6px 10px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showPage('inicio')">
+    <div class="nav-logo-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0F3D30" stroke-width="2.2">
+        <polyline points="3 17 8 12 12 15 17 8 21 11"/>
+      </svg>
+    </div>
+    <span class="nav-brand">AFINLAB</span>
+  </div>
+  <div class="nav-tabs" id="navTabs">
+    <button class="nav-tab active" onclick="showPage('inicio')">Inicio</button>
+    <button class="nav-tab" onclick="showPage('papers')">Investigaciones</button>
+    <button class="nav-tab" onclick="showPage('datos')">Base de Datos</button>
+    <button class="nav-tab" onclick="showPage('learning')">Learning Lab</button>
+    <button class="nav-tab" onclick="showPage('otros')">Proyectos</button>
+    <button class="nav-tab" onclick="showPage('unete')">Únete</button>
+  </div>
+  <button class="nav-cta" onclick="showPage('unete')">Postular →</button>
+</nav>
+
+<!-- ══════════════════════════════════════
+     PAGE: INICIO (con Misión, Visión, Propósito)
+═══════════════════════════════════════ -->
+<div id="page-inicio" class="page active">
+  <div class="hero">
+    <div class="hero-orb1"></div><div class="hero-orb2"></div>
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">Semestre académico 2026 · I</div>
+        <h1 class="hero-title">Un ecosistema de<br/><em>investigación,</em><br/>análisis y difusión<br/>financiera</h1>
+        <p class="hero-sub">AFINLAB es un semillero universitario que genera conocimiento financiero aplicado a través de proyectos colaborativos, análisis sectorial y publicaciones de impacto.</p>
+        <div class="hero-btns">
+          <button class="btn-mint" onclick="showPage('papers')">Ver investigaciones</button>
+          <button class="btn-ghost" onclick="showPage('datos')">Explorar datos</button>
+        </div>
+        <div class="pillars">
+          <div class="pilar"><div class="pilar-dot"></div><span>Investigar</span></div>
+          <div class="pilar"><div class="pilar-dot"></div><span>Analizar</span></div>
+          <div class="pilar"><div class="pilar-dot"></div><span>Comunicar</span></div>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="scard"><div class="scard-num">6</div><div class="scard-lbl">Proyectos activos</div></div>
+        <div class="scard"><div class="scard-num">5</div><div class="scard-lbl">Empresas analizadas</div></div>
+        <div class="scard wide"><div class="scard-num">2026·I</div><div class="scard-lbl">Semestre académico en curso</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUEVA SECCIÓN: MISIÓN, VISIÓN, PROPÓSITO -->
+  <div class="mvp-section">
+    <div class="mvp-inner">
+      <div class="mvp-label">Nuestro marco institucional</div>
+      <h2 class="mvp-title">Misión · Visión · Propósito</h2>
+      <div class="mvp-grid">
+        
+        <!-- Misión -->
+        <div class="mvp-card">
+          <div class="mvp-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z" stroke="currentColor" fill="none"/>
+              <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none"/>
+            </svg>
+          </div>
+          <div class="mvp-card-title">Misión</div>
+          <p class="mvp-card-text">Generar conocimiento financiero aplicado, formar talento analítico y
+desarrollar soluciones de investigación, análisis y comunicación que
+contribuyan a mejorar la toma de decisiones financieras en el sector
+agroindustrial, agrícola y otros de interés.</p>
+        </div>
+        
+        <!-- Visión -->
+        <div class="mvp-card">
+          <div class="mvp-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" fill="none"/>
+              <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none"/>
+            </svg>
+          </div>
+          <div class="mvp-card-title">Visión</div>
+          <p class="mvp-card-text">Ser el referente nacional en finanzas aplicadas e investigación, distinguiéndonos por conectar el rigor académico con análisis de alto impacto que impulsen el desarrollo de los sectores clave en la economía peruana.</p>
+        </div>
+        
+        <!-- Propósito -->
+        <div class="mvp-card">
+          <div class="mvp-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" fill="none"/>
+              <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" fill="none"/>
+            </svg>
+          </div>
+          <div class="mvp-card-title">Propósito</div>
+          <p class="mvp-card-text">Mejorar la toma de decisiones financieras del sector agrícola, agroindustrial y demás sectores económicos del Perú.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">AFINLAB</div>
+    <div class="footer-sub">Investigamos, analizamos y comunicamos las finanzas.</div>
+    <div class="footer-handle">@afinlab · Semestre 2026-I</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: PAPERS / INVESTIGACIONES
+═══════════════════════════════════════ -->
+<div id="page-papers" class="page">
+  <div class="sec" style="background:var(--cream);">
+    <div class="sec-inner">
+      <div class="sec-label">Proyecto 1</div>
+      <h2 class="sec-title">Desarrollo de investigaciones</h2>
+      <p class="sec-desc">Papers fundamentados con alta viabilidad para publicación profesional, basados en brechas de conocimiento y problemáticas reales del ecosistema financiero peruano.</p>
+      <div class="papers-grid">
+
+        <!-- PAPER 1 -->
+        <div class="paper-card">
+          <div class="paper-img">
+            <div class="paper-img-pattern"></div>
+            <div class="paper-img-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+          </div>
+          <div class="paper-body">
+            <span class="paper-tag">Gestión de organizaciones</span>
+            <div class="paper-title">Título del paper de investigación aquí</div>
+            <div class="paper-authors">Autor 1, Autor 2 · AFINLAB 2026</div>
+            <p class="paper-summary">Resumen del paper: describe brevemente el problema investigado, la metodología utilizada y los principales hallazgos. Este texto es editable y debe reemplazarse con el resumen real del artículo.</p>
+            <div class="paper-actions">
+              <button class="btn-sm-solid">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Descargar PDF
+              </button>
+              <button class="btn-sm-outline">
+                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Ver publicación
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAPER 2 -->
+        <div class="paper-card">
+          <div class="paper-img" style="background:linear-gradient(135deg,#0F4D3A,#1D9E75);">
+            <div class="paper-img-pattern"></div>
+            <div class="paper-img-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+          </div>
+          <div class="paper-body">
+            <span class="paper-tag">Estrategias empresariales</span>
+            <div class="paper-title">Título del segundo paper de investigación</div>
+            <div class="paper-authors">Autor 1, Autor 2 · AFINLAB 2026</div>
+            <p class="paper-summary">Resumen del paper: describe brevemente el problema investigado, la metodología utilizada y los principales hallazgos. Este texto es editable y debe reemplazarse con el resumen real del artículo.</p>
+            <div class="paper-actions">
+              <button class="btn-sm-solid">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Descargar PDF
+              </button>
+              <button class="btn-sm-outline">
+                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Ver publicación
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAPER 3 — Próximamente -->
+        <div class="paper-card" style="opacity:.6;">
+          <div class="paper-img" style="background:linear-gradient(135deg,#1a3a2f,#2a6e52);">
+            <div class="paper-img-pattern"></div>
+            <div class="paper-img-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+          </div>
+          <div class="paper-body">
+            <span class="paper-tag" style="background:#f0f0ec;color:#888;">En desarrollo</span>
+            <div class="paper-title" style="color:#aaa;">Próxima investigación 2026-I</div>
+            <div class="paper-authors" style="color:#bbb;">AFINLAB · En progreso</div>
+            <p class="paper-summary" style="color:#bbb;">Esta investigación está actualmente en desarrollo. Se publicará al finalizar el semestre académico 2026-I.</p>
+            <div class="paper-actions">
+              <button class="btn-sm-outline" disabled style="opacity:.5;cursor:not-allowed;">Próximamente</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-brand">AFINLAB</div><div class="footer-sub">@afinlab · Semestre 2026-I</div></footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: BASE DE DATOS
+═══════════════════════════════════════ -->
+<div id="page-datos" class="page">
+  <div class="sec">
+    <div class="sec-inner">
+      <div class="sec-label">Proyecto 6</div>
+      <h2 class="sec-title">Gestión de base de datos</h2>
+      <p class="sec-desc">Análisis descriptivo de variables financieras clave de las 5 empresas del sector azucarero peruano. Selecciona una empresa para explorar sus datos.</p>
+
+      <div class="empresa-tabs" id="empresaTabs">
+        <div class="emp-tab active" onclick="selectEmpresa('laredo')">Sol de Laredo</div>
+        <div class="emp-tab" onclick="selectEmpresa('cartavio')">Cartavio</div>
+        <div class="emp-tab" onclick="selectEmpresa('paramonga')">Paramonga</div>
+        <div class="emp-tab" onclick="selectEmpresa('casagrande')">Casa Grande</div>
+        <div class="emp-tab" onclick="selectEmpresa('sanjacinto')">San Jacinto</div>
+      </div>
+
+      <!-- SOL DE LAREDO -->
+      <div class="empresa-panel active" id="panel-laredo">
+        <div class="empresa-header">
+          <div><div class="emp-name">Sol de Laredo</div><div class="emp-sector">Agroindustria · Sector azucarero</div></div>
+          <div class="emp-kpis">
+            <div class="kpi"><div class="kpi-val">8.3%</div><div class="kpi-lbl">ROE prom.</div></div>
+            <div class="kpi"><div class="kpi-val">4.1%</div><div class="kpi-lbl">ROA prom.</div></div>
+            <div class="kpi"><div class="kpi-val">12.5%</div><div class="kpi-lbl">Margen neto</div></div>
+          </div>
+        </div>
+        <div class="charts-grid">
+          <div class="chart-card"><div class="chart-title">Ingresos / Ventas</div><div class="chart-sub">Miles de soles · Series anuales</div><div class="chart-wrap"><canvas id="ch-laredo-ingresos"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Utilidad neta</div><div class="chart-sub">Miles de soles · Series anuales</div><div class="chart-wrap"><canvas id="ch-laredo-utilidad"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">ROA y ROE</div><div class="chart-sub">Porcentaje anual</div><div class="chart-wrap"><canvas id="ch-laredo-roa"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Margen neto y Deuda/Patrimonio</div><div class="chart-sub">Ratios anuales</div><div class="chart-wrap"><canvas id="ch-laredo-margen"></canvas></div></div>
+        </div>
+      </div>
+
+      <!-- CARTAVIO -->
+      <div class="empresa-panel" id="panel-cartavio">
+        <div class="empresa-header">
+          <div><div class="emp-name">Cartavio</div><div class="emp-sector">Agroindustria · Sector azucarero</div></div>
+          <div class="emp-kpis">
+            <div class="kpi"><div class="kpi-val">11.2%</div><div class="kpi-lbl">ROE prom.</div></div>
+            <div class="kpi"><div class="kpi-val">5.6%</div><div class="kpi-lbl">ROA prom.</div></div>
+            <div class="kpi"><div class="kpi-val">15.1%</div><div class="kpi-lbl">Margen neto</div></div>
+          </div>
+        </div>
+        <div class="charts-grid">
+          <div class="chart-card"><div class="chart-title">Ingresos / Ventas</div><div class="chart-sub">Miles de soles</div><div class="chart-wrap"><canvas id="ch-cartavio-ingresos"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Utilidad neta</div><div class="chart-sub">Miles de soles</div><div class="chart-wrap"><canvas id="ch-cartavio-utilidad"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">ROA y ROE</div><div class="chart-sub">Porcentaje anual</div><div class="chart-wrap"><canvas id="ch-cartavio-roa"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Margen neto y Deuda/Patrimonio</div><div class="chart-sub">Ratios anuales</div><div class="chart-wrap"><canvas id="ch-cartavio-margen"></canvas></div></div>
+        </div>
+      </div>
+
+      <!-- PARAMONGA -->
+      <div class="empresa-panel" id="panel-paramonga">
+        <div class="empresa-header" style="background:var(--g700);">
+          <div><div class="emp-name">Paramonga</div><div class="emp-sector">Agroindustria · Sector azucarero</div></div>
+          <div class="emp-kpis">
+            <div class="kpi"><div class="kpi-val">6.8%</div><div class="kpi-lbl">ROE prom.</div></div>
+            <div class="kpi"><div class="kpi-val">3.2%</div><div class="kpi-lbl">ROA prom.</div></div>
+            <div class="kpi"><div class="kpi-val">9.4%</div><div class="kpi-lbl">Margen neto</div></div>
+          </div>
+        </div>
+        <div class="charts-grid">
+          <div class="chart-card"><div class="chart-title">Ingresos / Ventas</div><div class="chart-sub">Miles de soles</div><div class="chart-wrap"><canvas id="ch-paramonga-ingresos"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Utilidad neta</div><div class="chart-sub">Miles de soles</div><div class="chart-wrap"><canvas id="ch-paramonga-utilidad"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">ROA y ROE</div><div class="chart-sub">Porcentaje anual</div><div class="chart-wrap"><canvas id="ch-paramonga-roa"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Margen neto y Deuda/Patrimonio</div><div class="chart-sub">Ratios anuales</div><div class="chart-wrap"><canvas id="ch-paramonga-margen"></canvas></div></div>
+        </div>
+      </div>
+
+      <!-- CASA GRANDE -->
+      <div class="empresa-panel" id="panel-casagrande">
+        <div class="empresa-header" style="background:#0A4535;">
+          <div><div class="emp-name">Casa Grande</div><div class="emp-sector">Agroindustria · Sector azucarero</div></div>
+          <div class="emp-kpis">
+            <div class="kpi"><div class="kpi-val">14.7%</div><div class="kpi-lbl">ROE prom.</div></div>
+            <div class="kpi"><div class="kpi-val">7.1%</div><div class="kpi-lbl">ROA prom.</div></div>
+            <div class="kpi"><div class="kpi-val">18.3%</div><div class="kpi-lbl">Margen neto</div></div>
+          </div>
+        </div>
+        <div class="charts-grid">
+          <div class="chart-card"><div class="chart-title">Ingresos / Ventas</div><div class="chart-sub">Miles de soles</div><div class="chart-wrap"><canvas id="ch-casagrande-ingresos"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Utilidad neta</div><div class="chart-sub">Miles de soles</div><div class="chart-wrap"><canvas id="ch-casagrande-utilidad"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">ROA y ROE</div><div class="chart-sub">Porcentaje anual</div><div class="chart-wrap"><canvas id="ch-casagrande-roa"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Margen neto y Deuda/Patrimonio</div><div class="chart-sub">Ratios anuales</div><div class="chart-wrap"><canvas id="ch-casagrande-margen"></canvas></div></div>
+        </div>
+      </div>
+
+      <!-- SAN JACINTO -->
+      <div class="empresa-panel" id="panel-sanjacinto">
+        <div class="empresa-header" style="background:#0D5240;">
+          <div><div class="emp-name">San Jacinto</div><div class="emp-sector">Agroindustria · Sector azucarero</div></div>
+          <div class="emp-kpis">
+            <div class="kpi"><div class="kpi-val">9.5%</div><div class="kpi-lbl">ROE prom.</div></div>
+            <div class="kpi"><div class="kpi-val">4.8%</div><div class="kpi-lbl">ROA prom.</div></div>
+            <div class="kpi"><div class="kpi-val">13.2%</div><div class="kpi-lbl">Margen neto</div></div>
+          </div>
+        </div>
+        <div class="charts-grid">
+          <div class="chart-card"><div class="chart-title">Ingresos / Ventas</div><div class="chart-sub">Miles de soles</div><div class="chart-wrap"><canvas id="ch-sanjacinto-ingresos"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Utilidad neta</div><div class="chart-sub">Miles de soles</div><div class="chart-wrap"><canvas id="ch-sanjacinto-utilidad"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">ROA y ROE</div><div class="chart-sub">Porcentaje anual</div><div class="chart-wrap"><canvas id="ch-sanjacinto-roa"></canvas></div></div>
+          <div class="chart-card"><div class="chart-title">Margen neto y Deuda/Patrimonio</div><div class="chart-sub">Ratios anuales</div><div class="chart-wrap"><canvas id="ch-sanjacinto-margen"></canvas></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer><div class="footer-brand">AFINLAB</div><div class="footer-sub">@afinlab · Semestre 2026-I</div></footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: LEARNING LAB
+═══════════════════════════════════════ -->
+<div id="page-learning" class="page">
+  <div class="sec">
+    <div class="sec-inner">
+      <div class="sec-label">Proyecto 2</div>
+      <h2 class="sec-title">Sesiones Learning Lab</h2>
+      <p class="sec-desc">Análisis estadístico sectorial del sector azucarero peruano. Evaluación de ratios financieros, tendencias y benchmarking comparativo entre empresas.</p>
+
+      <div class="ll-empresa-tabs">
+        <div class="ll-tab active" onclick="selectLL('laredo')">Sol de Laredo</div>
+        <div class="ll-tab" onclick="selectLL('cartavio')">Cartavio</div>
+        <div class="ll-tab" onclick="selectLL('paramonga')">Paramonga</div>
+        <div class="ll-tab" onclick="selectLL('casagrande')">Casa Grande</div>
+        <div class="ll-tab" onclick="selectLL('sanjacinto')">San Jacinto</div>
+        <div class="ll-tab" onclick="selectLL('benchmark')">Benchmarking</div>
+      </div>
+
+      <!-- LAREDO LL -->
+      <div class="ll-panel active" id="ll-laredo">
+        <div class="ll-section-title">Análisis estadístico — Sol de Laredo</div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-box-val">S/. 485M</div><div class="stat-box-lbl">Ingresos prom.</div></div>
+          <div class="stat-box"><div class="stat-box-val">8.3%</div><div class="stat-box-lbl">ROE promedio</div></div>
+          <div class="stat-box"><div class="stat-box-val">1.42</div><div class="stat-box-lbl">D/P ratio</div></div>
+          <div class="stat-box"><div class="stat-box-val">σ 2.1%</div><div class="stat-box-lbl">Volatilidad ROE</div></div>
+        </div>
+        <div class="ll-charts">
+          <div class="ll-chart-card"><div class="ll-chart-title">Distribución de rentabilidad (ROA/ROE)</div><div class="ll-chart-wrap"><canvas id="ll-laredo-rent"></canvas></div></div>
+          <div class="ll-chart-card"><div class="ll-chart-title">Tendencia de márgenes</div><div class="ll-chart-wrap"><canvas id="ll-laredo-trend"></canvas></div></div>
+        </div>
+        <div class="interpretation">
+          <div class="interp-title">📊 Interpretación estadística</div>
+          <p class="interp-text">Sol de Laredo muestra una rentabilidad estable con un ROE promedio de 8.3% y baja volatilidad (σ=2.1%), indicando consistencia operativa. La relación Deuda/Patrimonio de 1.42 sugiere un nivel de apalancamiento moderado. [Reemplaza este texto con el análisis real del equipo AFINLAB.]</p>
+        </div>
+      </div>
+
+      <!-- CARTAVIO LL -->
+      <div class="ll-panel" id="ll-cartavio">
+        <div class="ll-section-title">Análisis estadístico — Cartavio</div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-box-val">S/. 620M</div><div class="stat-box-lbl">Ingresos prom.</div></div>
+          <div class="stat-box"><div class="stat-box-val">11.2%</div><div class="stat-box-lbl">ROE promedio</div></div>
+          <div class="stat-box"><div class="stat-box-val">1.18</div><div class="stat-box-lbl">D/P ratio</div></div>
+          <div class="stat-box"><div class="stat-box-val">σ 3.4%</div><div class="stat-box-lbl">Volatilidad ROE</div></div>
+        </div>
+        <div class="ll-charts">
+          <div class="ll-chart-card"><div class="ll-chart-title">Distribución de rentabilidad</div><div class="ll-chart-wrap"><canvas id="ll-cartavio-rent"></canvas></div></div>
+          <div class="ll-chart-card"><div class="ll-chart-title">Tendencia de márgenes</div><div class="ll-chart-wrap"><canvas id="ll-cartavio-trend"></canvas></div></div>
+        </div>
+        <div class="interpretation">
+          <div class="interp-title">📊 Interpretación estadística</div>
+          <p class="interp-text">Cartavio presenta el mayor ROE del sector (11.2%), con mayor volatilidad que Sol de Laredo. Su ratio D/P de 1.18 refleja menor apalancamiento relativo. [Reemplaza este texto con el análisis real del equipo AFINLAB.]</p>
+        </div>
+      </div>
+
+      <!-- PARAMONGA LL -->
+      <div class="ll-panel" id="ll-paramonga">
+        <div class="ll-section-title">Análisis estadístico — Paramonga</div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-box-val">S/. 310M</div><div class="stat-box-lbl">Ingresos prom.</div></div>
+          <div class="stat-box"><div class="stat-box-val">6.8%</div><div class="stat-box-lbl">ROE promedio</div></div>
+          <div class="stat-box"><div class="stat-box-val">1.85</div><div class="stat-box-lbl">D/P ratio</div></div>
+          <div class="stat-box"><div class="stat-box-val">σ 1.8%</div><div class="stat-box-lbl">Volatilidad ROE</div></div>
+        </div>
+        <div class="ll-charts">
+          <div class="ll-chart-card"><div class="ll-chart-title">Distribución de rentabilidad</div><div class="ll-chart-wrap"><canvas id="ll-paramonga-rent"></canvas></div></div>
+          <div class="ll-chart-card"><div class="ll-chart-title">Tendencia de márgenes</div><div class="ll-chart-wrap"><canvas id="ll-paramonga-trend"></canvas></div></div>
+        </div>
+        <div class="interpretation">
+          <div class="interp-title">📊 Interpretación estadística</div>
+          <p class="interp-text">Paramonga registra el ROE más conservador del sector (6.8%), con el mayor ratio D/P (1.85), lo que indica mayor carga financiera relativa. Presenta la menor volatilidad del grupo. [Reemplaza este texto con el análisis real del equipo AFINLAB.]</p>
+        </div>
+      </div>
+
+      <!-- CASA GRANDE LL -->
+      <div class="ll-panel" id="ll-casagrande">
+        <div class="ll-section-title">Análisis estadístico — Casa Grande</div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-box-val">S/. 890M</div><div class="stat-box-lbl">Ingresos prom.</div></div>
+          <div class="stat-box"><div class="stat-box-val">14.7%</div><div class="stat-box-lbl">ROE promedio</div></div>
+          <div class="stat-box"><div class="stat-box-val">0.95</div><div class="stat-box-lbl">D/P ratio</div></div>
+          <div class="stat-box"><div class="stat-box-val">σ 4.2%</div><div class="stat-box-lbl">Volatilidad ROE</div></div>
+        </div>
+        <div class="ll-charts">
+          <div class="ll-chart-card"><div class="ll-chart-title">Distribución de rentabilidad</div><div class="ll-chart-wrap"><canvas id="ll-casagrande-rent"></canvas></div></div>
+          <div class="ll-chart-card"><div class="ll-chart-title">Tendencia de márgenes</div><div class="ll-chart-wrap"><canvas id="ll-casagrande-trend"></canvas></div></div>
+        </div>
+        <div class="interpretation">
+          <div class="interp-title">📊 Interpretación estadística</div>
+          <p class="interp-text">Casa Grande lidera el sector en rentabilidad (ROE 14.7%) con el ratio D/P más bajo (0.95), reflejo de su solidez patrimonial. Es la empresa más grande por ingresos del grupo analizado. [Reemplaza este texto con el análisis real del equipo AFINLAB.]</p>
+        </div>
+      </div>
+
+      <!-- SAN JACINTO LL -->
+      <div class="ll-panel" id="ll-sanjacinto">
+        <div class="ll-section-title">Análisis estadístico — San Jacinto</div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-box-val">S/. 420M</div><div class="stat-box-lbl">Ingresos prom.</div></div>
+          <div class="stat-box"><div class="stat-box-val">9.5%</div><div class="stat-box-lbl">ROE promedio</div></div>
+          <div class="stat-box"><div class="stat-box-val">1.31</div><div class="stat-box-lbl">D/P ratio</div></div>
+          <div class="stat-box"><div class="stat-box-val">σ 2.7%</div><div class="stat-box-lbl">Volatilidad ROE</div></div>
+        </div>
+        <div class="ll-charts">
+          <div class="ll-chart-card"><div class="ll-chart-title">Distribución de rentabilidad</div><div class="ll-chart-wrap"><canvas id="ll-sanjacinto-rent"></canvas></div></div>
+          <div class="ll-chart-card"><div class="ll-chart-title">Tendencia de márgenes</div><div class="ll-chart-wrap"><canvas id="ll-sanjacinto-trend"></canvas></div></div>
+        </div>
+        <div class="interpretation">
+          <div class="interp-title">📊 Interpretación estadística</div>
+          <p class="interp-text">San Jacinto presenta un perfil equilibrado con ROE de 9.5% y volatilidad moderada. Su ratio D/P de 1.31 indica un nivel de endeudamiento intermedio dentro del sector. [Reemplaza este texto con el análisis real del equipo AFINLAB.]</p>
+        </div>
+      </div>
+
+      <!-- BENCHMARKING LL -->
+      <div class="ll-panel" id="ll-benchmark">
+        <div class="ll-section-title">Benchmarking sectorial — Las 5 empresas</div>
+        <div class="ll-charts">
+          <div class="ll-chart-card" style="grid-column:1/-1;"><div class="ll-chart-title">ROE comparativo — Sector azucarero peruano</div><div class="ll-chart-wrap" style="height:260px;"><canvas id="ll-bench-roe"></canvas></div></div>
+          <div class="ll-chart-card"><div class="ll-chart-title">ROA comparativo</div><div class="ll-chart-wrap"><canvas id="ll-bench-roa"></canvas></div></div>
+          <div class="ll-chart-card"><div class="ll-chart-title">Deuda / Patrimonio</div><div class="ll-chart-wrap"><canvas id="ll-bench-dp"></canvas></div></div>
+          <div class="ll-chart-card" style="grid-column:1/-1;"><div class="ll-chart-title">Ingresos comparativos (S/. Miles)</div><div class="ll-chart-wrap" style="height:200px;"><canvas id="ll-bench-ingresos"></canvas></div></div>
+        </div>
+        <div class="interpretation">
+          <div class="interp-title">📊 Conclusiones del benchmarking</div>
+          <p class="interp-text">Casa Grande lidera en rentabilidad y escala, con el menor apalancamiento del grupo. Cartavio destaca por su ROE elevado con estructura financiera eficiente. Paramonga y Sol de Laredo muestran perfiles más conservadores. [Reemplaza este texto con las conclusiones finales del equipo AFINLAB.]</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer><div class="footer-brand">AFINLAB</div><div class="footer-sub">@afinlab · Semestre 2026-I</div></footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: OTROS PROYECTOS
+═══════════════════════════════════════ -->
+<div id="page-otros" class="page">
+  <div class="sec">
+    <div class="sec-inner">
+      <div class="sec-label">Proyectos en curso</div>
+      <h2 class="sec-title">Más proyectos del semillero</h2>
+      <p class="sec-desc">Además del análisis financiero, AFINLAB desarrolla iniciativas de comunicación, eventos y difusión que construyen el ecosistema del semillero.</p>
+      <div class="otros-grid">
+        <div class="otro-card">
+          <div class="otro-num">P · 03</div>
+          <div class="otro-icon"><svg viewBox="0 0 24 24"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div class="otro-name">Financial Insights</div>
+          <p class="otro-desc">Revista semestral que convierte los análisis del Learning Lab en un producto editorial accesible para la comunidad universitaria, el sector empresarial y entusiastas de las finanzas.</p>
+          <div class="otro-tag-row">
+            <span class="tag-chip">Publicación semestral</span>
+            <span class="tag-chip">Diseño editorial</span>
+            <span class="tag-chip">Difusión</span>
+          </div>
+        </div>
+        <div class="otro-card">
+          <div class="otro-num">P · 04</div>
+          <div class="otro-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div>
+          <div class="otro-name">Applied Finance Day</div>
+          <p class="otro-desc">Evento de cierre y validación externa del semestre. Los miembros exponen sus análisis sectoriales ante audiencia invitada, consolidando oratoria, networking estratégico y capacidad analítica.</p>
+          <div class="otro-tag-row">
+            <span class="tag-chip">Evento académico</span>
+            <span class="tag-chip">Networking</span>
+            <span class="tag-chip">Exposición</span>
+          </div>
+        </div>
+        <div class="otro-card">
+          <div class="otro-num">P · 05</div>
+          <div class="otro-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div class="otro-name">Difusión en redes sociales</div>
+          <p class="otro-desc">Estrategia de contenido en LinkedIn e Instagram que posiciona la marca institucional de AFINLAB y construye la marca profesional de cada miembro con crédito individual por publicación.</p>
+          <div class="otro-tag-row">
+            <span class="tag-chip">LinkedIn</span>
+            <span class="tag-chip">Instagram</span>
+            <span class="tag-chip">@afinlab</span>
+          </div>
+        </div>
+        <div class="otro-card">
+          <div class="otro-num">Las 3 funciones</div>
+          <div class="otro-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="otro-name">Investigar · Analizar · Comunicar</div>
+          <p class="otro-desc">Cada miembro de AFINLAB ejerce las 3 funciones del semillero en todos los proyectos, siguiendo un ciclo de mejora continua que orienta el trabajo colectivo y la generación de conocimiento.</p>
+          <div class="otro-tag-row">
+            <span class="tag-chip">Investigar</span>
+            <span class="tag-chip">Analizar</span>
+            <span class="tag-chip">Comunicar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-brand">AFINLAB</div><div class="footer-sub">@afinlab · Semestre 2026-I</div></footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: ÚNETE
+═══════════════════════════════════════ -->
+<div id="page-unete" class="page">
+  <div class="sec">
+    <div class="sec-inner">
+      <div class="conv-hero">
+        <div class="conv-orb"></div>
+        <div class="conv-title">¿Quieres ser parte<br/>de <em>AFINLAB?</em></div>
+        <p class="conv-sub">Únete al semillero de investigación y análisis financiero más activo de la universidad. Aprende, publica y crece junto a nosotros este semestre.</p>
+        <div class="bens">
+          <div class="ben">Formación técnica en finanzas aplicadas</div>
+          <div class="ben">Publicaciones académicas con tu nombre</div>
+          <div class="ben">Networking con sector empresarial</div>
+          <div class="ben">Construcción de marca profesional</div>
+          <div class="ben">Experiencia en investigación real</div>
+          <div class="ben">Acceso a base de datos financieros</div>
+        </div>
+        <button class="btn-mint" onclick="document.querySelector('.conv-form-sec').scrollIntoView({behavior:'smooth'})">Quiero postular →</button>
+      </div>
+      <div class="conv-form-sec">
+        <div class="form-title">Formulario de postulación</div>
+        <div class="form-sub">Completa tus datos y nos pondremos en contacto contigo. Semestre 2026-I.</div>
+        <div class="form-grid">
+          <div class="form-group"><label class="form-label">Nombre completo</label><input class="form-input" type="text" placeholder="Tu nombre"/></div>
+          <div class="form-group"><label class="form-label">Correo institucional</label><input class="form-input" type="email" placeholder="correo@universidad.edu"/></div>
+          <div class="form-group"><label class="form-label">Ciclo académico</label><input class="form-input" type="text" placeholder="Ej: 4to ciclo"/></div>
+          <div class="form-group"><label class="form-label">Carrera</label><input class="form-input" type="text" placeholder="Administración, Economía, etc."/></div>
+          <div class="form-group full"><label class="form-label">¿Por qué quieres unirte a AFINLAB?</label><textarea class="form-input" rows="4" placeholder="Cuéntanos tu motivación..."></textarea></div>
+        </div>
+        <button class="form-submit">Enviar postulación →</button>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-brand">AFINLAB</div><div class="footer-sub">@afinlab · Semestre 2026-I</div></footer>
+</div>
+
+<script>
+// ── PAGE NAVIGATION ──
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const tabs = {inicio:0,papers:1,datos:2,learning:3,otros:4,unete:5};
+  document.querySelectorAll('.nav-tab')[tabs[id]]?.classList.add('active');
+  window.scrollTo(0,0);
+  if (id === 'datos') { setTimeout(() => initDatosCharts(), 50); }
+  if (id === 'learning') { setTimeout(() => initLLCharts(), 50); }
+}
+
+// ── EMPRESA SELECTOR (DATOS) ──
+function selectEmpresa(id) {
+  document.querySelectorAll('.empresa-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.emp-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.target.classList.add('active');
+  setTimeout(() => initDatosCharts(id), 50);
+}
+
+// ── LEARNING LAB SELECTOR ──
+function selectLL(id) {
+  document.querySelectorAll('.ll-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ll-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('ll-' + id).classList.add('active');
+  event.target.classList.add('active');
+  setTimeout(() => initLLCharts(id), 50);
+}
+
+// ── CHART CONFIG ──
+const YEARS = ['2019','2020','2021','2022','2023'];
+const G = {
+  green:'#2E7D4E', mint:'#5DC86C', light:'#C8F0CF',
+  cream:'#F5F4EF', border:'#EAE9E3', text:'#7BA898'
+};
+const baseOpts = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{legend:{labels:{color:G.text,font:{size:11,family:'DM Sans'},boxWidth:12}}},
+  scales:{
+    x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:G.text,font:{size:10}}},
+    y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:G.text,font:{size:10}}}
+  }
+};
+
+const DATA = {
+  laredo:     { ing:[412,389,445,492,510], util:[48,42,56,63,67], roa:[3.8,3.4,4.2,4.5,4.6], roe:[7.9,7.2,8.4,8.8,8.9], margen:[11.6,10.8,12.6,12.8,13.1], dp:[1.38,1.45,1.42,1.40,1.38] },
+  cartavio:   { ing:[540,498,580,640,665], util:[78,70,90,100,107], roa:[5.0,4.7,5.8,6.0,6.1], roe:[10.5,9.8,11.4,11.9,12.1], margen:[14.4,14.1,15.5,15.6,16.1], dp:[1.22,1.25,1.18,1.15,1.13] },
+  paramonga:  { ing:[268,245,295,330,342], util:[24,20,28,33,36], roa:[2.8,2.5,3.2,3.5,3.6], roe:[6.2,5.8,6.9,7.2,7.4], margen:[9.0,8.2,9.5,10.0,10.5], dp:[1.90,1.95,1.85,1.80,1.78] },
+  casagrande: { ing:[760,710,845,930,980], util:[132,118,158,175,188], roa:[6.5,5.9,7.2,7.5,7.8], roe:[13.5,12.5,15.0,15.5,16.1], margen:[17.4,16.6,18.7,18.8,19.2], dp:[1.00,1.05,0.95,0.92,0.90] },
+  sanjacinto: { ing:[365,335,390,440,460], util:[46,40,52,58,62], roa:[4.2,3.8,4.9,5.2,5.4], roe:[8.8,8.2,9.7,10.0,10.2], margen:[12.6,11.9,13.3,13.2,13.5], dp:[1.35,1.38,1.31,1.28,1.26] }
+};
+
+const chartInstances = {};
+function makeChart(id, type, labels, datasets, opts) {
+  if (chartInstances[id]) { chartInstances[id].destroy(); }
+  const el = document.getElementById(id);
+  if (!el) return;
+  chartInstances[id] = new Chart(el, {
+    type, data:{labels, datasets},
+    options:{...baseOpts, ...opts}
+  });
+}
+
+function barDS(label, data, color) {
+  return {label, data, backgroundColor: color+'CC', borderColor: color, borderWidth:1.5, borderRadius:4};
+}
+function lineDS(label, data, color, fill=false) {
+  return {label, data, borderColor:color, backgroundColor:color+'22', borderWidth:2, pointRadius:3, pointBackgroundColor:color, tension:0.35, fill};
+}
+
+function initDatosCharts(emp = 'laredo') {
+  const d = DATA[emp] || DATA.laredo;
+  makeChart('ch-'+emp+'-ingresos','bar', YEARS, [barDS('Ingresos (S/. M)',d.ing,G.green)]);
+  makeChart('ch-'+emp+'-utilidad','bar', YEARS, [barDS('Utilidad neta (S/. M)',d.util,G.mint)]);
+  makeChart('ch-'+emp+'-roa','line', YEARS, [lineDS('ROA %',d.roa,G.green), lineDS('ROE %',d.roe,G.mint)]);
+  makeChart('ch-'+emp+'-margen','line', YEARS, [lineDS('Margen Neto %',d.margen,G.green), lineDS('D/P',d.dp,'#F5A623')]);
+}
+
+function initLLCharts(tab = 'laredo') {
+  if (tab === 'benchmark' || tab === undefined) {
+    const emps = ['Sol de Laredo','Cartavio','Paramonga','Casa Grande','San Jacinto'];
+    const keys = ['laredo','cartavio','paramonga','casagrande','sanjacinto'];
+    const roe2023 = keys.map(k => DATA[k].roe[4]);
+    const roa2023 = keys.map(k => DATA[k].roa[4]);
+    const dp2023  = keys.map(k => DATA[k].dp[4]);
+    const ing2023 = keys.map(k => DATA[k].ing[4]);
+    const colors  = ['#2E7D4E','#41AB5D','#5DC86C','#8FD99A','#C8F0CF'];
+    makeChart('ll-bench-roe','bar', emps, [{label:'ROE % (2023)',data:roe2023,backgroundColor:colors,borderWidth:0,borderRadius:6}],{plugins:{legend:{display:false}}});
+    makeChart('ll-bench-roa','bar', emps, [{label:'ROA % (2023)',data:roa2023,backgroundColor:colors,borderWidth:0,borderRadius:6}],{plugins:{legend:{display:false}}});
+    makeChart('ll-bench-dp','bar',  emps, [{label:'D/P (2023)',data:dp2023,backgroundColor:colors,borderWidth:0,borderRadius:6}],{plugins:{legend:{display:false}}});
+    makeChart('ll-bench-ingresos','bar', emps, [{label:'Ingresos S/. M (2023)',data:ing2023,backgroundColor:colors,borderWidth:0,borderRadius:6}],{plugins:{legend:{display:false}}});
+    return;
+  }
+  if (tab === undefined) tab = 'laredo';
+  const d = DATA[tab];
+  if (!d) return;
+  makeChart('ll-'+tab+'-rent','line', YEARS, [lineDS('ROA %',d.roa,G.green,true), lineDS('ROE %',d.roe,G.mint,true)]);
+  makeChart('ll-'+tab+'-trend','line', YEARS, [lineDS('Margen Neto %',d.margen,G.green), lineDS('D/P',d.dp,'#F5A623')]);
+}
+
+window.addEventListener('load', () => {});
+</script>
+</body>
+</html>
