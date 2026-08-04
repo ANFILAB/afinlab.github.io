@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conoce AFINLAB - Nuestra Historia | Applied Finance Learning Lab</title>
+    <meta name="description"
+        content="Conoce la historia, misión, visión y líneas de investigación del semillero AFINLAB de la Universidad Nacional Agraria La Molina.">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=3">
+
+    <!-- Google Fonts for Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN (Sticky / Fija superior) -->
+    <header class="navbar" id="main-navbar">
+        <div class="navbar-container">
+            <!-- Extremo izquierdo: logo "AFINLAB" (imagen1) -->
+            <a href="index.html" class="navbar-logo" id="logo-link">
+                <img src="logo.png" alt="AFINLAB Logo" class="logo-img-afinlab" id="logo-img-afinlab"
+                    onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 width=%22120%22 height=%2240%22 fill=%22%231F6E43%22><text x=%220%22 y=%2226%22 font-family=%22sans-serif%22 font-size=%2220%22 font-weight=%22bold%22 fill=%22%2316283F%22>imagen1</text></svg>'">
+            </a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="navbar-toggle" id="menu-toggle-btn" aria-label="Abrir Menú de Navegación"
+                aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Centro-derecha: menú de navegación horizontal -->
+            <nav class="navbar-nav" id="navbar-menu-nav">
+                <ul class="navbar-menu" id="nav-menu-list">
+                    <li><a href="index.html#sobre-nosotros" class="navbar-link" id="nav-link-about">Sobre nosotros</a>
+                    </li>
+                    <li><a href="equipo.html" class="navbar-link" id="nav-link-team">Equipo</a></li>
+                    <li><a href="proyectos.html" class="navbar-link" id="nav-link-projects">Proyectos</a></li>
+                    <li><a href="#publicaciones" class="navbar-link" id="nav-link-publications"
+                            onclick="showSectionAlert('Publicaciones')">Publicaciones</a></li>
+                    <li><a href="#eventos" class="navbar-link" id="nav-link-events"
+                            onclick="showSectionAlert('Eventos')">Eventos</a></li>
+                    <li><a href="#recursos" class="navbar-link" id="nav-link-resources"
+                            onclick="showSectionAlert('Recursos')">Recursos</a></li>
+                    <li><a href="#contacto" class="navbar-link" id="nav-link-contact"
+                            onclick="showSectionAlert('Contacto')">Contacto</a></li>
+                </ul>
+            </nav>
+
+
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- EDITORIAL CONTENT SECTION: ABOUT US -->
+        <section class="about-section" id="sobre-nosotros-page">
+            <div class="container">
+                <div class="about-grid">
+                    <!-- Left: Text content -->
+                    <div class="about-content">
+                        <h2 class="about-title"><span class="title-light">Conoce</span> <span
+                                class="title-bold">AFINLAB</span></h2>
+                        <span class="about-subtitle">Nuestra historia</span>
+                        <p class="about-text">
+                            Estudiantes de la Universidad Nacional Agraria La Molina, pertenecientes a las carreras de
+                            Ingeniería en Gestión Empresarial, Economía, Estadística Informática y todas aquellas
+                            interesadas en la gestión financiera sostenible.
+                        </p>
+                    </div>
+                    <!-- Right: Circular image -->
+                    <div class="about-media">
+                        <img src="foto-equipo.png" alt="Estudiantes AFINLAB" class="about-circle-img"
+                            onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 width=%22300%22 height=%22300%22 fill=%22%23eaeaea%22><circle cx=%2212%22 cy=%2212%22 r=%2210%22 fill=%22%23cbd5e1%22/><text x=%225%22 y=%2214%22 font-family=%22sans-serif%22 font-size=%223%22>k.png</text></svg>'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3 — MISIÓN / VISIÓN / PROPÓSITO / LÍNEA DE INVESTIGACIÓN -->
+        <section class="grid-section" id="mision-vision-values-page">
+            <div class="grid-container">
+                <div class="cards-grid">
+                    <!-- Card 1: Misión -->
+                    <div class="grid-card">
+                        <h3 class="card-title">Misión</h3>
+                        <p class="card-text">Impulsar el análisis financiero y la toma de decisiones estratégicas</p>
+                    </div>
+
+                    <!-- Card 2: Visión -->
+                    <div class="grid-card">
+                        <h3 class="card-title">Visión</h3>
+                        <p class="card-text">Liderar la investigación y las finanzas aplicadas con impacto en el
+                            desarrollo económico.</p>
+                    </div>
+
+                    <!-- Card 3: Propósito -->
+                    <div class="grid-card">
+                        <h3 class="card-title">Propósito</h3>
+                        <p class="card-text">Liderar la investigación y las finanzas aplicadas con impacto en el
+                            desarrollo económico.</p>
+                    </div>
+
+                    <!-- Card 4: Línea de Investigación -->
+                    <div class="grid-card">
+                        <h3 class="card-title">Línea de investigación</h3>
+                        <p class="card-text">Mejorar la toma de decisiones financieras en los sectores económicos del
+                            Perú.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="main-footer" style="border-top: none !important;">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AFINLAB Logo" class="footer-logo-img"
+                    onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 width=%2248%22 height=%2248%22 fill=%22%23ffffff%22><text x=%220%22 y=%2220%22 font-family=%22sans-serif%22 font-size=%2216%22 font-weight=%22bold%22 fill=%22white%22>imagen1</text></svg>'">
+                <div>
+                    <span class="footer-brand-title">AFINLAB</span><br>
+                    <span class="footer-brand-sub">Semillero de Investigación UNALM</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- App Logic Script -->
+    <script src="app.js"></script>
+</body>
+
+</html>
