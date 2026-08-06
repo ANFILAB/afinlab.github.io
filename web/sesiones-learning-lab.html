@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesiones Learning Lab - AFINLAB | Applied Finance Learning Lab</title>
+    <meta name="description"
+        content="Análisis estadístico de ratios financieros (ROE, ROA, D/P, Margen Neto) de las principales empresas azucareras peruanas, desarrollado por AFINLAB.">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=4">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Chart.js (para los gráficos de ratios) -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="navbar" id="main-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo" id="logo-link">
+                <img src="logo.png" alt="AFINLAB Logo" class="logo-img-afinlab" id="logo-img-afinlab"
+                    onerror="this.style.display='none'">
+            </a>
+
+            <button class="navbar-toggle" id="menu-toggle-btn" aria-label="Abrir Menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="navbar-nav" id="navbar-menu-nav">
+                <ul class="navbar-menu" id="nav-menu-list">
+                    <li><a href="index.html#sobre-nosotros" class="navbar-link">Sobre nosotros</a></li>
+                    <li><a href="equipo.html" class="navbar-link">Equipo</a></li>
+                    <li><a href="proyectos.html" class="navbar-link navbar-link--active">Proyectos</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Publicaciones')">Publicaciones</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Eventos')">Eventos</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Recursos')">Recursos</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Contacto')">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-shield">
+                <img src="escudo-unalm.png" alt="Escudo UNALM" class="logo-img-unalm"
+                    onerror="this.style.display='none'">
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- SECCIÓN SESIONES LEARNING LAB -->
+        <section class="sesiones-section" id="sesiones-learning-lab">
+            <div class="sesiones-container">
+
+                <!-- Barra superior: volver + breadcrumb -->
+                <div class="sesiones-topbar">
+                    <a href="proyectos.html" class="sesiones-back">
+                        <span aria-hidden="true">&lsaquo;</span> Volver a Proyectos
+                    </a>
+                    <nav class="sesiones-breadcrumb" aria-label="breadcrumb">
+                        <a href="proyectos.html">Proyectos</a>
+                        <span aria-hidden="true">/</span>
+                        <span>Sesiones Learning Lab</span>
+                        <span aria-hidden="true">/</span>
+                        <span id="breadcrumb-empresa">Sol de Laredo</span>
+                    </nav>
+                </div>
+
+                <!-- Encabezado -->
+                <div class="sesiones-header">
+                    <span class="sesiones-label">PROYECTO 2</span>
+                    <h1 class="sesiones-title">Sesiones Learning Lab</h1>
+                </div>
+
+                <!-- Tabs de empresa -->
+                <div class="company-tabs" id="company-tabs" role="tablist">
+                    <button class="tab-btn active" data-company="Laredo" role="tab">Sol de Laredo</button>
+                    <button class="tab-btn" data-company="Cartavio" role="tab">Cartavio</button>
+                    <button class="tab-btn" data-company="Paramonga" role="tab">Paramonga</button>
+                    <button class="tab-btn" data-company="Casa Grande" role="tab">Casa Grande</button>
+                    <button class="tab-btn" data-company="San Jacinto" role="tab">San Jacinto</button>
+                    <button class="tab-btn" data-company="Benchmarking" role="tab">Benchmarking</button>
+                </div>
+
+                <!-- Subtítulo de análisis -->
+                <h2 class="analisis-subtitle">
+                    Análisis estadístico — <span id="analisis-empresa">Sol de Laredo</span>
+                </h2>
+
+                <!-- KPI Cards -->
+                <div class="kpi-grid" id="kpi-grid">
+                    <div class="kpi-card">
+                        <span class="kpi-value" id="kpi-ingresos">—</span>
+                        <span class="kpi-label">Ingresos Prom.</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-value" id="kpi-roe">—</span>
+                        <span class="kpi-label">ROE Promedio</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-value" id="kpi-dp">—</span>
+                        <span class="kpi-label">D/P Ratio</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-value" id="kpi-volatilidad">—</span>
+                        <span class="kpi-label">Volatilidad ROE</span>
+                    </div>
+                </div>
+
+                <!-- Gráficos -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3 class="chart-title">Distribución de rentabilidad (ROA/ROE)</h3>
+                        <canvas id="chart-roa-roe"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3 class="chart-title">Tendencia de márgenes</h3>
+                        <canvas id="chart-margen-dp"></canvas>
+                    </div>
+                </div>
+
+                <!-- Interpretación estadística -->
+                <div class="interpretation-box">
+                    <span class="interpretation-title">Interpretación estadística</span>
+                    <p class="interpretation-text" id="interpretation-text">
+                        Selecciona una empresa para ver el análisis.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AFINLAB Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                <div>
+                    <span class="footer-brand-title">AFINLAB</span><br>
+                    <span class="footer-brand-sub">Semillero de Investigación UNALM</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="sesiones-learning-lab.js"></script>
+</body>
+
+</html>

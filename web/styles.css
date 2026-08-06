@@ -1263,3 +1263,248 @@ main {
     .miembros-grid { grid-template-columns: repeat(2, 1fr); }
     .org-directors-wrap { flex-direction: column; }
 }
+/* ============================================================
+   PÁGINA: SESIONES LEARNING LAB
+   Agregar este bloque al final de styles.css
+   ============================================================ */
+
+.sesiones-section {
+    min-height: calc(100vh - 95px);
+    background-color: var(--bg-white);
+    padding: 32px 0 100px;
+}
+
+.sesiones-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ── Barra superior: volver + breadcrumb ── */
+.sesiones-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.sesiones-back {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: var(--transition-fast);
+}
+
+.sesiones-back:hover {
+    color: var(--primary-green-hover);
+    gap: 8px;
+}
+
+.sesiones-breadcrumb {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.sesiones-breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.sesiones-breadcrumb a:hover {
+    color: var(--primary-green);
+}
+
+.sesiones-breadcrumb span:last-child {
+    color: var(--text-navy);
+    font-weight: 600;
+}
+
+/* ── Encabezado ── */
+.sesiones-header {
+    margin-bottom: 24px;
+}
+
+.sesiones-label {
+    display: block;
+    font-family: var(--font-poppins);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--primary-green);
+    margin-bottom: 6px;
+}
+
+.sesiones-title {
+    font-family: var(--font-poppins);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-navy);
+    letter-spacing: -0.3px;
+}
+
+/* ── Tabs de empresa ── */
+.company-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.tab-btn {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-navy);
+    background-color: var(--bg-white);
+    border: 1.5px solid rgba(22, 40, 63, 0.15);
+    border-radius: var(--radius-pill);
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.tab-btn:hover {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+}
+
+.tab-btn.active {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+    color: var(--text-white);
+}
+
+/* ── Subtítulo de análisis ── */
+.analisis-subtitle {
+    font-family: var(--font-poppins);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+}
+
+/* ── KPI Cards ── */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.kpi-card {
+    background: linear-gradient(135deg, #0f4c3a 0%, #1e56a0 100%);
+    border-radius: 12px;
+    padding: 22px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+    box-shadow: var(--shadow-medium);
+}
+
+.kpi-value {
+    font-family: var(--font-poppins);
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--text-white);
+}
+
+.kpi-label {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Gráficos ── */
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.chart-card {
+    background-color: var(--bg-white);
+    border: 1px solid rgba(22, 40, 63, 0.08);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: var(--shadow-soft);
+}
+
+.chart-title {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-navy);
+    margin-bottom: 12px;
+}
+
+.chart-card canvas {
+    max-height: 260px;
+}
+
+/* ── Interpretación estadística ── */
+.interpretation-box {
+    background: linear-gradient(90deg, #0f4c3a 0%, #1e40af 100%);
+    border-radius: 12px;
+    padding: 18px 24px;
+}
+
+.interpretation-title {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--text-white);
+    margin-bottom: 4px;
+}
+
+.interpretation-text {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+    .sesiones-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+    .sesiones-container {
+        padding: 0 20px;
+    }
+    .sesiones-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
