@@ -2,7 +2,7 @@
    SESIONES LEARNING LAB — Lógica de datos y gráficos (Chart.js)
    ========================================================================== */
 
-let financialsData = null;
+// financialsData is loaded globally from financials.js
 let chartRoaRoe = null;
 let chartMargenDp = null;
 
@@ -22,18 +22,31 @@ const CHART_COLORS = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('financials.json')
-        .then(res => res.json())
-        .then(data => {
-            financialsData = data;
-            renderCompany('Laredo');
-            setupTabs();
-        })
-        .catch(err => {
-            console.error('No se pudo cargar financials.json', err);
-            const box = document.getElementById('interpretation-text');
-            if (box) box.textContent = 'No se pudieron cargar los datos financieros. Verifica que financials.json esté en la misma carpeta.';
+    if (typeof financialsData !== 'undefined' && financialsData !== null) {
+        // Determinar empresa inicial desde el hash del URL (ej. #Cartavio)
+        let initialCompany = 'Laredo';
+        const hash = decodeURIComponent(window.location.hash.substring(1));
+        const validCompanies = ['Laredo', 'Cartavio', 'Paramonga', 'Casa Grande', 'San Jacinto'];
+        if (validCompanies.includes(hash)) {
+            initialCompany = hash;
+        }
+
+        // Activar visualmente la pestaña correcta
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(tab => {
+            if (tab.dataset.company === initialCompany) {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            }
         });
+
+        renderCompany(initialCompany);
+        setupTabs();
+    } else {
+        console.error('No se pudo cargar financialsData. Verifica que financials.js esté en la misma carpeta e incluido.');
+        const box = document.getElementById('interpretation-text');
+        if (box) box.textContent = 'No se pudieron cargar los datos financieros. Verifica que financials.js esté en la misma carpeta.';
+    }
 });
 
 function setupTabs() {

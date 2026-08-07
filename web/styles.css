@@ -1508,3 +1508,385 @@ main {
         align-items: flex-start;
     }
 }
+
+/* ============================================================
+   PÁGINA: GESTIÓN DE BASE DE DATOS
+   ============================================================ */
+
+.database-section {
+    min-height: calc(100vh - 95px);
+    background: linear-gradient(135deg, #026856 0%, #038b53 50%, #03c75d 100%);
+    padding: 32px 0 100px;
+}
+
+.database-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Breadcrumbs y links */
+.database-section .sesiones-back {
+    color: #ffffff;
+}
+
+.database-section .sesiones-back:hover {
+    color: var(--accent-mint);
+}
+
+.database-section .sesiones-breadcrumb {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.database-section .sesiones-breadcrumb a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.database-section .sesiones-breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.database-section .sesiones-breadcrumb span:last-child {
+    color: #ffffff;
+}
+
+.database-section .sesiones-label {
+    color: #ffffff;
+}
+
+.database-section .sesiones-title {
+    color: #ffffff;
+}
+
+/* Tabs de Empresa */
+.database-section .tab-btn {
+    background-color: #ffffff;
+    color: #026856;
+    border: 1.5px solid #ffffff;
+}
+
+.database-section .tab-btn:hover {
+    background-color: #f0f7f5;
+    color: #014c3e;
+    border-color: #ffffff;
+}
+
+.database-section .tab-btn.active {
+    background-color: #024d3f;
+    color: #ffffff;
+    border-color: #024d3f;
+}
+
+/* Estilos de Foto Real de la Empresa */
+.company-photo {
+    width: 100%;
+    height: 260px;
+    background-color: rgba(2, 44, 27, 0.3);
+    border-radius: var(--radius-card);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+}
+
+.company-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transition-smooth);
+}
+
+.company-photo:hover .company-img {
+    transform: scale(1.05);
+}
+
+.company-photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
+    color: var(--text-white);
+    padding: 30px 20px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.company-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-title {
+    font-family: var(--font-poppins);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: -10px;
+}
+
+.profile-text {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
+}
+
+.profile-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.profile-fact-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.profile-fact-icon {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-top: 3px;
+    width: 24px;
+    text-align: center;
+}
+
+.profile-fact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.profile-fact-lbl {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+}
+
+.profile-fact-val {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.estados-formal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+/* Documento Oficial */
+.database-section .estados-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.database-section .doc-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.database-section .doc-header svg {
+    width: 36px;
+    height: 36px;
+    stroke: #ffffff;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.database-section .doc-header-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.database-section .doc-header-title {
+    font-family: var(--font-poppins);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.database-section .doc-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #ffffff;
+    border-radius: var(--radius-standard);
+    padding: 16px 20px;
+    border: none;
+}
+
+.database-section .doc-meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(22, 40, 63, 0.08);
+    padding: 8px 0;
+}
+
+.database-section .doc-meta-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.database-section .doc-meta-row:first-child {
+    padding-top: 0;
+}
+
+.database-section .doc-meta-lbl {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: #64748b;
+    margin: 0;
+}
+
+.database-section .doc-meta-val {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--text-navy);
+    margin: 0;
+}
+
+.database-section .doc-download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #03c75d;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 12px 24px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(3, 199, 93, 0.2);
+}
+
+.database-section .doc-download-btn:hover {
+    background-color: #038b53;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(3, 199, 93, 0.35);
+}
+
+.database-section .doc-download-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.database-section .doc-citation {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.4;
+    padding-left: 8px;
+    border-left: 2.5px solid rgba(255, 255, 255, 0.35);
+}
+
+.database-section .doc-citation-lbl {
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.database-section .ll-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-pill);
+    padding: 12px 24px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-decoration: none;
+    width: auto;
+    align-self: flex-start;
+}
+
+.database-section .ll-link-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.database-section .ll-link-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Panel hidden state */
+.empresa-panel {
+    display: none;
+    grid-template-columns: 380px 1fr;
+    gap: 32px;
+}
+
+.empresa-panel.active {
+    display: grid;
+}
+
+@media (max-width: 991px) {
+    .empresa-panel {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .empresa-panel.active {
+        grid-template-columns: 1fr;
+    }
+    .company-photo-placeholder,
+    .company-photo {
+        max-width: 450px;
+        margin: 0 auto;
+        width: 100%;
+        height: 300px;
+        aspect-ratio: 16 / 10;
+    }
+}
