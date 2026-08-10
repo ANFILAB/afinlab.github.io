@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difusión en Redes Sociales - AFINLAB | Applied Finance Learning Lab</title>
+    <meta name="description"
+        content="Difusión de contenido, cobertura de eventos y posicionamiento externo del semillero AFINLAB en redes sociales.">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=4">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="navbar" id="main-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo" id="logo-link">
+                <img src="logo.png" alt="AFINLAB Logo" class="logo-img-afinlab" id="logo-img-afinlab"
+                    onerror="this.style.display='none'">
+            </a>
+
+            <button class="navbar-toggle" id="menu-toggle-btn" aria-label="Abrir Menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="navbar-nav" id="navbar-menu-nav">
+                <ul class="navbar-menu" id="nav-menu-list">
+                    <li><a href="index.html#sobre-nosotros" class="navbar-link">Sobre nosotros</a></li>
+                    <li><a href="equipo.html" class="navbar-link">Equipo</a></li>
+                    <li><a href="proyectos.html" class="navbar-link navbar-link--active">Proyectos</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Publicaciones')">Publicaciones</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Eventos')">Eventos</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Recursos')">Recursos</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Contacto')">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-shield">
+                <img src="escudo-unalm.png" alt="Escudo UNALM" class="logo-img-unalm"
+                    onerror="this.style.display='none'">
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- SECCIÓN REDES SOCIALES -->
+        <section class="redes-section" id="redes-sociales">
+            <div class="redes-container">
+
+                <!-- Barra superior: volver + breadcrumb -->
+                <div class="sesiones-topbar">
+                    <a href="proyectos.html" class="sesiones-back">
+                        <span aria-hidden="true">&lsaquo;</span> Volver a Proyectos
+                    </a>
+                    <nav class="sesiones-breadcrumb" aria-label="breadcrumb">
+                        <a href="proyectos.html">Proyectos</a>
+                        <span aria-hidden="true">/</span>
+                        <span>Difusión en Redes Sociales</span>
+                    </nav>
+                </div>
+
+                <!-- Encabezado -->
+                <div class="sesiones-header">
+                    <span class="sesiones-label">PROYECTO 4</span>
+                    <h1 class="sesiones-title">Redes Sociales</h1>
+                    <p class="redes-subtitle">Difusión de contenido, cobertura de eventos y posicionamiento externo del semillero.</p>
+                </div>
+
+                <!-- Tarjetas de plataformas -->
+                <div class="redes-grid">
+
+                    <!-- INSTAGRAM -->
+                    <div class="redes-card">
+                        <div class="redes-card__header">
+                            <div class="redes-icon redes-icon--instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h2 class="redes-card__title">Instagram</h2>
+                                <span class="redes-card__handle">@afinlab.unalm</span>
+                            </div>
+                        </div>
+
+                        <span class="redes-section-lbl">Contenido que publican</span>
+                        <div class="redes-photo-row">
+                            <div class="redes-photo redes-photo--qr">
+                                <img src="instagram-qr.png" alt="QR Instagram AFINLAB"
+                                    onerror="this.parentElement.classList.add('redes-photo--empty')">
+                            </div>
+                            <div class="redes-photo">
+                                <img src="redes-foto1.jpg" alt="Cobertura de evento AFINLAB"
+                                    onerror="this.parentElement.classList.add('redes-photo--empty')">
+                            </div>
+                            <div class="redes-photo">
+                                <img src="redes-foto2.jpg" alt="Contenido educativo AFINLAB"
+                                    onerror="this.parentElement.classList.add('redes-photo--empty')">
+                            </div>
+                        </div>
+
+                        <p class="redes-card__text">Resultados de investigaciones sectoriales, cobertura de eventos y contenido educativo de finanzas aplicadas.</p>
+
+                        <span class="redes-section-lbl">Tecnología</span>
+                        <div class="redes-pills">
+                            <span class="redes-pill">Canva</span>
+                            <span class="redes-pill">Instagram (Reels / Stories)</span>
+                        </div>
+                    </div>
+
+                    <!-- LINKEDIN -->
+                    <div class="redes-card">
+                        <div class="redes-card__header">
+                            <div class="redes-icon redes-icon--linkedin">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <div>
+                                <h2 class="redes-card__title">LinkedIn</h2>
+                                <span class="redes-card__handle">linktr.ee/afinlab.unalm</span>
+                            </div>
+                        </div>
+
+                        <div class="redes-linkedin-body">
+                            <span class="redes-section-lbl redes-section-lbl--full">Qué encontrarás</span>
+                            <div class="redes-linkedin-inner">
+                                <div class="redes-photo redes-photo--qr redes-photo--lg">
+                                    <img src="linkedin-qr.png" alt="QR LinkedIn / Linktree AFINLAB"
+                                        onerror="this.parentElement.classList.add('redes-photo--empty')">
+                                </div>
+                                <ul class="redes-list">
+                                    <li>Web oficial de AFINLAB</li>
+                                    <li>Redes y publicaciones</li>
+                                    <li>Formulario de postulación</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <p class="redes-card__text">Un solo enlace en la bio de Instagram que centraliza todo el acceso externo al semillero.</p>
+
+                        <span class="redes-section-lbl">Tecnología</span>
+                        <div class="redes-pills">
+                            <span class="redes-pill">LinkedIn</span>
+                            <span class="redes-pill">Linktree</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AFINLAB Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                <div>
+                    <span class="footer-brand-title">AFINLAB</span><br>
+                    <span class="footer-brand-sub">Semillero de Investigación UNALM</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
