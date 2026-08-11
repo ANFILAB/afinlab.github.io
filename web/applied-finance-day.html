@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Finance Day - AFINLAB | Applied Finance Learning Lab</title>
+    <meta name="description"
+        content="Applied Finance Day, el evento de cierre y validación externa de AFINLAB, donde el equipo expone sus análisis sectoriales ante una audiencia invitada.">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=4">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="navbar" id="main-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo" id="logo-link">
+                <img src="logo.png" alt="AFINLAB Logo" class="logo-img-afinlab" id="logo-img-afinlab"
+                    onerror="this.style.display='none'">
+            </a>
+
+            <button class="navbar-toggle" id="menu-toggle-btn" aria-label="Abrir Menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="navbar-nav" id="navbar-menu-nav">
+                <ul class="navbar-menu" id="nav-menu-list">
+                    <li><a href="index.html#sobre-nosotros" class="navbar-link">Sobre nosotros</a></li>
+                    <li><a href="equipo.html" class="navbar-link">Equipo</a></li>
+                    <li><a href="proyectos.html" class="navbar-link navbar-link--active">Proyectos</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Publicaciones')">Publicaciones</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Eventos')">Eventos</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Recursos')">Recursos</a></li>
+                    <li><a href="#" class="navbar-link" onclick="showSectionAlert('Contacto')">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-shield">
+                <img src="escudo-unalm.png" alt="Escudo UNALM" class="logo-img-unalm"
+                    onerror="this.style.display='none'">
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- SECCIÓN APPLIED FINANCE DAY -->
+        <section class="afd-section" id="applied-finance-day">
+            <div class="afd-container">
+
+                <!-- Barra superior: volver -->
+                <div class="sesiones-topbar">
+                    <a href="proyectos.html" class="sesiones-back">
+                        <span aria-hidden="true">&lsaquo;</span> Volver a Proyectos
+                    </a>
+                </div>
+
+                <div class="afd-layout">
+
+                    <!-- COLUMNA IZQUIERDA -->
+                    <div class="afd-main">
+                        <span class="sesiones-label">PROYECTO 5</span>
+                        <h1 class="sesiones-title">Applied Finance Day</h1>
+
+                        <div class="afd-date-card">
+                            <span class="afd-date-card__day">26</span>
+                            <div class="afd-date-card__text">
+                                <span class="afd-date-card__month">DE AGOSTO, 2026</span>
+                                <span class="afd-date-card__event">Exposición final ante audiencia invitada</span>
+                            </div>
+                        </div>
+
+                        <p class="afd-description">
+                            El Applied Finance Day es el evento de cierre y validación externa. Los miembros exponen sus análisis sectoriales ante una audiencia invitada, consolidando sus habilidades de oratoria, fomentando el networking estratégico y demostrando su capacidad técnica y analítica.
+                        </p>
+
+                        <div class="afd-pills">
+                            <span class="afd-pill">Exposición sectorial</span>
+                            <span class="afd-pill">Oratoria</span>
+                            <span class="afd-pill">Networking estratégico</span>
+                            <span class="afd-pill">Evaluación técnica</span>
+                        </div>
+
+                        <p class="afd-footnote">Cierre del ciclo de investigación &middot; Edición 2026</p>
+                    </div>
+
+                    <!-- COLUMNA DERECHA: fotos -->
+                    <div class="afd-photos">
+                        <div class="afd-photo-frame">
+                            <img src="afd-foto1.jpg" alt="Exposición Applied Finance Day"
+                                onerror="this.parentElement.classList.add('afd-photo-frame--empty')">
+                        </div>
+                        <div class="afd-photo-frame">
+                            <img src="afd-foto2.jpg" alt="Equipo trabajando en Applied Finance Day"
+                                onerror="this.parentElement.classList.add('afd-photo-frame--empty')">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AFINLAB Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                <div>
+                    <span class="footer-brand-title">AFINLAB</span><br>
+                    <span class="footer-brand-sub">Semillero de Investigación UNALM</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

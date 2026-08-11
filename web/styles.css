@@ -2481,3 +2481,174 @@ main {
         text-align: left;
     }
 }
+/* ============================================================
+   PÁGINA: APPLIED FINANCE DAY
+   Agregar este bloque al final de styles.css
+   ============================================================ */
+
+.afd-section {
+    min-height: calc(100vh - 95px);
+    background: linear-gradient(135deg, #06331f 0%, #0f5c37 45%, #2fa356 100%);
+    padding: 32px 0 100px;
+}
+
+.afd-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.afd-section .sesiones-back {
+    color: var(--text-white);
+}
+
+.afd-section .sesiones-label,
+.afd-section .sesiones-title {
+    color: var(--text-white);
+}
+
+/* ── Layout: contenido | fotos ── */
+.afd-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 40px;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.afd-main {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+/* ── Tarjeta de fecha ── */
+.afd-date-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(0, 0, 0, 0.22);
+    border-radius: 14px;
+    padding: 16px 24px;
+    width: fit-content;
+}
+
+.afd-date-card__day {
+    font-family: var(--font-poppins);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-white);
+    line-height: 1;
+}
+
+.afd-date-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.afd-date-card__month {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--text-white);
+}
+
+.afd-date-card__event {
+    font-family: var(--font-seasons);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Descripción ── */
+.afd-description {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 52ch;
+}
+
+/* ── Pills de temas ── */
+.afd-pills {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    width: fit-content;
+}
+
+.afd-pill {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-navy);
+    background-color: var(--bg-white);
+    padding: 12px 22px;
+    border-radius: var(--radius-pill);
+    text-align: center;
+}
+
+/* ── Nota al pie de la columna ── */
+.afd-footnote {
+    font-family: var(--font-seasons);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 4px;
+}
+
+/* ── Columna de fotos ── */
+.afd-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.afd-photo-frame {
+    background-color: var(--bg-white);
+    border-radius: 14px;
+    padding: 8px;
+    box-shadow: var(--shadow-float);
+    aspect-ratio: 4 / 3;
+}
+
+.afd-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.afd-photo-frame--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.afd-photo-frame--empty::after {
+    content: 'Falta imagen';
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+    .afd-layout {
+        grid-template-columns: 1fr;
+    }
+    .afd-pills {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    .afd-container {
+        padding: 0 20px;
+    }
+}
