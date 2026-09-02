@@ -211,6 +211,10 @@
             color: var(--text-white);
             cursor: pointer;
             transition: var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
         }
 
         .btn-inscribirse:hover {
@@ -229,6 +233,10 @@
             color: var(--text-navy);
             cursor: pointer;
             transition: var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
         }
 
         .btn-ver-detalles:hover {
@@ -832,74 +840,30 @@
                     <div class="proximos-col">
                         <div class="eventos-col-header">
                             <h2 class="eventos-col-title">Próximos Eventos</h2>
-                            <span class="eventos-badge eventos-badge--green">6 PROGRAMADOS</span>
+                            <span class="eventos-badge eventos-badge--green">1 PROGRAMADO</span>
                         </div>
 
                         <div class="proximos-list">
-
-                            <!-- Evento 1 -->
+                            <!-- Convocatoria AFINLAB 2026-II -->
                             <div class="proximo-card">
                                 <div class="proximo-date">
-                                    <span class="proximo-date__day">14</span>
-                                    <span class="proximo-date__month">AGO</span>
+                                    <span class="proximo-date__day">II</span>
+                                    <span class="proximo-date__month">2026</span>
                                 </div>
                                 <div class="proximo-info">
-                                    <span class="proximo-category">Evento Financiero</span>
-                                    <h3 class="proximo-title">Valor razonable en el agro: NIC 41 y NIIF 13 en la práctica</h3>
+                                    <span class="proximo-category">Convocatoria General</span>
+                                    <h3 class="proximo-title">Convocatoria AFINLAB 2026-II</h3>
                                     <div class="proximo-meta">
-                                        <span><i class="fa-regular fa-clock"></i> 4:00 p.m. – 6:00 p.m.</span>
-                                        <span><i class="fa-solid fa-location-dot"></i> Presencial · Auditorio FCA (UNALM)</span>
+                                        <span><i class="fa-regular fa-clock"></i> Próximamente · Semestre 2026-II</span>
+                                        <span><i class="fa-solid fa-location-dot"></i> Presencial / Virtual · UNALM</span>
                                     </div>
-                                    <p class="proximo-desc">Panel con especialistas del sector azucarero sobre la medición del valor razonable de activos biológicos y su tratamiento contable.</p>
+                                    <p class="proximo-desc">Se acerca la nueva convocatoria para la incorporación de miembros al Semillero de Investigación AFINLAB. ¡Prepárate para potenciar tus habilidades en análisis financiero e investigación aplicada!</p>
                                     <div class="proximo-actions">
-                                        <button class="btn-inscribirse" onclick="showSectionAlert('Inscripción')">Inscríbeme</button>
-                                        <button class="btn-ver-detalles" onclick="openModal(0)">Ver detalles</button>
+                                        <a href="contacto.html" class="btn-inscribirse">Ver convocatoria</a>
+                                        <button class="btn-ver-detalles" onclick="openModal(0)">Detalles</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Evento 2 -->
-                            <div class="proximo-card">
-                                <div class="proximo-date">
-                                    <span class="proximo-date__day">28</span>
-                                    <span class="proximo-date__month">AGO</span>
-                                </div>
-                                <div class="proximo-info">
-                                    <span class="proximo-category">Evento Financiero</span>
-                                    <h3 class="proximo-title">Mesa financiera: resultados 2025 del sector azucarero peruano</h3>
-                                    <div class="proximo-meta">
-                                        <span><i class="fa-regular fa-clock"></i> 6:00 p.m. – 7:30 p.m.</span>
-                                        <span><i class="fa-solid fa-video"></i> Virtual · Zoom AFINLAB</span>
-                                    </div>
-                                    <p class="proximo-desc">Análisis comparativo de ROA, ROE y margen neto de Casa Grande, Cartavio, Paramonga y San Jacinto, con espacio de preguntas.</p>
-                                    <div class="proximo-actions">
-                                        <button class="btn-inscribirse" onclick="showSectionAlert('Inscripción')">Inscríbeme</button>
-                                        <button class="btn-ver-detalles" onclick="openModal(1)">Ver detalles</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Evento 3 -->
-                            <div class="proximo-card">
-                                <div class="proximo-date">
-                                    <span class="proximo-date__day">25</span>
-                                    <span class="proximo-date__month">AGO</span>
-                                </div>
-                                <div class="proximo-info">
-                                    <span class="proximo-category">Seminario UNALM</span>
-                                    <h3 class="proximo-title">Seminario FCA-UNALM: avances en contabilidad y finanzas agrarias</h3>
-                                    <div class="proximo-meta">
-                                        <span><i class="fa-regular fa-clock"></i> 9:00 a.m. – 12:00 p.m.</span>
-                                        <span><i class="fa-solid fa-location-dot"></i> Presencial · Auditorio Central UNALM</span>
-                                    </div>
-                                    <p class="proximo-desc">Ponencias de docentes e investigadores de la FCA-UNALM sobre contabilidad agraria, gestión financiera y sostenibilidad del agro.</p>
-                                    <div class="proximo-actions">
-                                        <button class="btn-inscribirse" onclick="showSectionAlert('Inscripción')">Inscríbeme</button>
-                                        <button class="btn-ver-detalles" onclick="openModal(2)">Ver detalles</button>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
 
@@ -909,7 +873,7 @@
                     <div class="anteriores-col">
                         <div class="eventos-col-header">
                             <h2 class="eventos-col-title">Otros Eventos Anteriores</h2>
-                            <span class="eventos-badge eventos-badge--gray">4 REALIZADOS</span>
+                            <span class="eventos-badge eventos-badge--gray">5 REALIZADOS</span>
                         </div>
 
                         <div class="anteriores-grid">
@@ -926,7 +890,7 @@
                                     <p class="anterior-desc">Ceremonia de bienvenida e integración de los nuevos miembros del semillero, con la presentación oficial de las líneas de investigación del semestre.</p>
                                     <div class="anterior-stats">
                                         <span><i class="fa-solid fa-users"></i> 45 asistentes</span>
-                                        <button class="stat-fotos-btn" onclick="abrirGaleria(0)"><i class="fa-solid fa-camera"></i> 22 fotos</button>
+                                        <button class="stat-fotos-btn" onclick="abrirGaleria(0)"><i class="fa-solid fa-camera"></i> 10 fotos</button>
                                     </div>
                                 </div>
                             </div>
@@ -934,16 +898,16 @@
                             <!-- Anterior 2 -->
                             <div class="anterior-card">
                                 <div class="anterior-photo">
-                                    <img src="img2.jpg" alt="Primera sesión Learning Lab: Casa Grande"
+                                    <img src="taller1.png" alt="Talleres Learning Lab"
                                         onerror="this.parentElement.classList.add('anterior-photo--empty'); this.style.display='none'">
                                 </div>
                                 <div class="anterior-body">
                                     <span class="anterior-date">26 MARZO 2026</span>
-                                    <h3 class="anterior-title">Primera sesión Learning Lab: Casa Grande</h3>
-                                    <p class="anterior-desc">Sesión inaugural del Learning Lab, con el análisis financiero introductorio de Casa Grande, la azucarera más grande del país.</p>
+                                    <h3 class="anterior-title">Talleres Learning Lab</h3>
+                                    <p class="anterior-desc">Sesiones y talleres del Learning Lab, con el análisis financiero introductorio y comparativo de las principales empresas azucareras del país.</p>
                                     <div class="anterior-stats">
                                         <span><i class="fa-solid fa-users"></i> 31 asistentes</span>
-                                        <button class="stat-fotos-btn" onclick="abrirGaleria(1)"><i class="fa-solid fa-camera"></i> 15 fotos</button>
+                                        <button class="stat-fotos-btn" onclick="abrirGaleria(1)"><i class="fa-solid fa-camera"></i> 6 fotos</button>
                                     </div>
                                 </div>
                             </div>
@@ -951,16 +915,16 @@
                             <!-- Anterior 3 -->
                             <div class="anterior-card">
                                 <div class="anterior-photo">
-                                    <img src="img3.jpg" alt="Conversatorio: Finanzas Sostenibles"
+                                    <img src="sem1.png" alt="Semana de Investigación"
                                         onerror="this.parentElement.classList.add('anterior-photo--empty'); this.style.display='none'">
                                 </div>
                                 <div class="anterior-body">
-                                    <span class="anterior-date">09 ABRIL 2026</span>
-                                    <h3 class="anterior-title">Conversatorio: Finanzas Sostenibles</h3>
-                                    <p class="anterior-desc">Panel con invitados externos sobre sostenibilidad financiera y ambiental en la agroindustria azucarera peruana.</p>
+                                    <span class="anterior-date">27–28 MAYO 2026</span>
+                                    <h3 class="anterior-title">Semana de Investigación</h3>
+                                    <p class="anterior-desc">Presentación del semillero AFINLAB: quiénes somos, qué hacemos y qué investigamos, dentro de la Semana de Investigación de la FCA-UNALM.</p>
                                     <div class="anterior-stats">
-                                        <span><i class="fa-solid fa-users"></i> 58 asistentes</span>
-                                        <button class="stat-fotos-btn" onclick="abrirGaleria(2)"><i class="fa-solid fa-camera"></i> 20 fotos</button>
+                                        <span><i class="fa-solid fa-users"></i> <span class="anterior-asistentes-placeholder">— asistentes</span></span>
+                                        <button class="stat-fotos-btn" onclick="abrirGaleria(2)"><i class="fa-solid fa-camera"></i> 6 fotos</button>
                                     </div>
                                 </div>
                             </div>
@@ -968,16 +932,33 @@
                             <!-- Anterior 4 -->
                             <div class="anterior-card">
                                 <div class="anterior-photo">
-                                    <img src="img4.jpg" alt="Taller de R para análisis financiero"
+                                    <img src="fer1.png" alt="Feria Vocacional"
                                         onerror="this.parentElement.classList.add('anterior-photo--empty'); this.style.display='none'">
                                 </div>
                                 <div class="anterior-body">
-                                    <span class="anterior-date">23 ABRIL 2026</span>
-                                    <h3 class="anterior-title">Taller de R para análisis financiero</h3>
-                                    <p class="anterior-desc">Primer taller técnico del semestre: fundamentos de R aplicados a la lectura y al análisis de estados financieros.</p>
+                                    <span class="anterior-date">29 MAYO 2026</span>
+                                    <h3 class="anterior-title">Taller Feria Vocacional</h3>
+                                    <p class="anterior-desc">Participación de AFINLAB en la Feria Vocacional, dando a conocer el semillero a estudiantes interesados en investigación financiera.</p>
                                     <div class="anterior-stats">
-                                        <span><i class="fa-solid fa-users"></i> 27 asistentes</span>
-                                        <button class="stat-fotos-btn" onclick="abrirGaleria(3)"><i class="fa-solid fa-camera"></i> 12 fotos</button>
+                                        <span><i class="fa-solid fa-users"></i> <span class="anterior-asistentes-placeholder">— asistentes</span></span>
+                                        <button class="stat-fotos-btn" onclick="abrirGaleria(3)"><i class="fa-solid fa-camera"></i> 3 fotos</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Anterior 5 -->
+                            <div class="anterior-card">
+                                <div class="anterior-photo">
+                                    <img src="appi1.jpg" alt="Applied Finance Day"
+                                        onerror="this.parentElement.classList.add('anterior-photo--empty'); this.style.display='none'">
+                                </div>
+                                <div class="anterior-body">
+                                    <span class="anterior-date">26 AGOSTO 2026</span>
+                                    <h3 class="anterior-title">Applied Finance Day</h3>
+                                    <p class="anterior-desc">Feria interna del semillero AFINLAB donde se presentaron los resultados de los talleres y de las distintas áreas del semillero.</p>
+                                    <div class="anterior-stats">
+                                        <span><i class="fa-solid fa-users"></i> <span class="anterior-asistentes-placeholder">— asistentes</span></span>
+                                        <button class="stat-fotos-btn" onclick="abrirGaleria(4)"><i class="fa-solid fa-camera"></i> 11 fotos</button>
                                     </div>
                                 </div>
                             </div>
@@ -1034,7 +1015,7 @@
                     <span id="modal-lugar-wrap"><i class="fa-solid fa-location-dot"></i> <span id="modal-lugar">—</span></span>
                 </div>
                 <div class="modal-actions">
-                    <button class="btn-inscribirse" onclick="showSectionAlert('Inscripción')">Inscríbeme</button>
+                    <a href="contacto.html" class="btn-inscribirse">Ir a Contacto</a>
                     <button class="btn-ver-detalles" onclick="closeModal()">Cerrar</button>
                 </div>
             </div>
@@ -1073,31 +1054,13 @@
         /* ── Datos de los próximos eventos ── */
         const eventosData = [
             {
-                fecha: '14 de agosto',
-                categoria: 'Evento Financiero',
-                titulo: 'Valor razonable en el agro: NIC 41 y NIIF 13 en la práctica',
-                descripcion: 'Panel con especialistas del sector azucarero sobre la medición del valor razonable de activos biológicos y su tratamiento contable bajo las normas NIIF vigentes.',
-                hora: '4:00 p.m. – 6:00 p.m.',
-                lugar: 'Presencial · Auditorio FCA (UNALM)',
-                img: 'img5.jpg'
-            },
-            {
-                fecha: '28 de agosto',
-                categoria: 'Evento Financiero',
-                titulo: 'Mesa financiera: resultados 2025 del sector azucarero peruano',
-                descripcion: 'Análisis comparativo de ROA, ROE y margen neto de Casa Grande, Cartavio, Paramonga y San Jacinto, con espacio de preguntas al equipo AFINLAB.',
-                hora: '6:00 p.m. – 7:30 p.m.',
-                lugar: 'Virtual · Zoom AFINLAB',
-                img: 'img6.jpg'
-            },
-            {
-                fecha: '25 de agosto',
-                categoria: 'Seminario UNALM',
-                titulo: 'Seminario FCA-UNALM: avances en contabilidad y finanzas agrarias',
-                descripcion: 'Ponencias de docentes e investigadores de la FCA-UNALM sobre contabilidad agraria, gestión financiera y sostenibilidad del agro peruano.',
-                hora: '9:00 a.m. – 12:00 p.m.',
-                lugar: 'Presencial · Auditorio Central UNALM',
-                img: 'img7.jpg'
+                fecha: 'Próximamente · Semestre 2026-II',
+                categoria: 'Convocatoria General',
+                titulo: 'Convocatoria de Nuevos Miembros AFINLAB 2026-II',
+                descripcion: 'Se acerca el proceso de postulación y selección para nuevos miembros del Semillero de Investigación AFINLAB (Periodo Académico 2026-II). Invitamos a todos los estudiantes de la UNALM apasionados por el análisis financiero, la modelación cuantitativa y la investigación aplicada a estar atentos a la apertura de inscripciones y publicación de bases.',
+                hora: 'Próximo lanzamiento · Semestre 2026-II',
+                lugar: 'UNALM · Modalidad Híbrida (Presencial / Virtual)',
+                img: 'foto-equipo.png'
             }
         ];
 
@@ -1141,28 +1104,27 @@
 
         /* ══════════════════════════════════════
            GALERÍA DE FOTOS
-           Rangos de archivos por evento anterior:
-           Evento 0 → eventos1.png  – eventos22.png  (22 fotos)
-           Evento 1 → eventos23.png – eventos37.png  (15 fotos)
-           Evento 2 → eventos38.png – eventos57.png  (20 fotos)
-           Evento 3 → eventos58.png – eventos69.png  (12 fotos)
         ══════════════════════════════════════ */
         const galeriaData = [
             {
                 titulo: 'Lanzamiento AFINLAB 2026-I',
-                fotos: generarFotos(1, 22)
+                fotos: generarFotos(1, 10)
             },
             {
-                titulo: 'Primera sesión Learning Lab: Casa Grande',
-                fotos: generarFotos(23, 37)
+                titulo: 'Talleres Learning Lab',
+                fotos: ['taller1.png', 'taller2.png', 'taller3.png', 'taller4.png', 'taller5.png', 'taller6.png']
             },
             {
-                titulo: 'Conversatorio: Finanzas Sostenibles',
-                fotos: generarFotos(38, 57)
+                titulo: 'Semana de Investigación',
+                fotos: ['sem1.png', 'sem2.png', 'sem3.png', 'sem4.png', 'sem5.png', 'sem6.png']
             },
             {
-                titulo: 'Taller de R para análisis financiero',
-                fotos: generarFotos(58, 69)
+                titulo: 'Taller Feria Vocacional',
+                fotos: ['fer1.png', 'fer2.png', 'fer3.png']
+            },
+            {
+                titulo: 'Applied Finance Day',
+                fotos: ['appi1.jpg', 'appi2.jpg', 'appi3.jpg', 'appi4.jpg', 'appi5.jpg', 'appi6.jpg', 'appi7.jpg', 'appi8.jpg', 'appi9.jpg', 'appi10.jpg', 'appi11.jpg']
             }
         ];
 

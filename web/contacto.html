@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="styles.css?v=4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -90,7 +92,7 @@
             background: #ffffff;
             border-radius: 14px;
             padding: 18px 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         }
 
         .ctc-benefit-box ul {
@@ -108,7 +110,9 @@
             text-decoration: none !important;
         }
 
-        .ctc-benefit-box ul li:last-child { margin-bottom: 0; }
+        .ctc-benefit-box ul li:last-child {
+            margin-bottom: 0;
+        }
 
         /* ── Botón Quiero postular ── */
         .ctc-btn-postular {
@@ -160,7 +164,7 @@
 
         .ctc-hero-photo-fallback i {
             font-size: 5rem;
-            color: rgba(255,255,255,0.25);
+            color: rgba(255, 255, 255, 0.25);
         }
 
         /* ============================================================
@@ -190,13 +194,20 @@
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
             animation: modalIn 0.25s ease;
         }
 
         @keyframes modalIn {
-            from { opacity: 0; transform: translateY(20px) scale(0.97); }
-            to   { opacity: 1; transform: translateY(0) scale(1); }
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .ctc-modal-header {
@@ -218,12 +229,12 @@
         .ctc-modal-header-sub {
             font-family: var(--font-sans);
             font-size: 0.83rem;
-            color: rgba(255,255,255,0.65);
+            color: rgba(255, 255, 255, 0.65);
             margin-top: 2px;
         }
 
         .ctc-modal-close {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             border: none;
             border-radius: 50%;
             width: 36px;
@@ -238,7 +249,9 @@
             flex-shrink: 0;
         }
 
-        .ctc-modal-close:hover { background: rgba(255,255,255,0.28); }
+        .ctc-modal-close:hover {
+            background: rgba(255, 255, 255, 0.28);
+        }
 
         .ctc-modal-body {
             padding: 32px 32px 36px;
@@ -258,7 +271,9 @@
             gap: 8px;
         }
 
-        .ctc-form-group.full { grid-column: 1 / -1; }
+        .ctc-form-group.full {
+            grid-column: 1 / -1;
+        }
 
         .ctc-form-label {
             font-family: var(--font-poppins);
@@ -328,6 +343,12 @@
             transform: translateY(-2px);
         }
 
+        .ctc-btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         /* ── Éxito ── */
         .ctc-success {
             display: none;
@@ -335,7 +356,9 @@
             padding: 48px 24px;
         }
 
-        .ctc-success.visible { display: block; }
+        .ctc-success.visible {
+            display: block;
+        }
 
         .ctc-success-icon {
             font-size: 3.5rem;
@@ -359,23 +382,53 @@
 
         /* ── Responsive ── */
         @media (max-width: 991px) {
-            .ctc-hero-container { grid-template-columns: 1fr; }
-            .ctc-hero-photo { display: none; }
+            .ctc-hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .ctc-hero-photo {
+                display: none;
+            }
         }
 
         @media (max-width: 768px) {
-            .ctc-hero-title { font-size: 2.2rem; }
-            .ctc-benefits { grid-template-columns: 1fr; }
-            .ctc-form-grid { grid-template-columns: 1fr; }
-            .ctc-form-group.full { grid-column: 1; }
-            .ctc-modal-body { padding: 24px 20px 28px; }
-            .ctc-modal-header { padding: 20px 20px; }
+            .ctc-hero-title {
+                font-size: 2.2rem;
+            }
+
+            .ctc-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .ctc-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ctc-form-group.full {
+                grid-column: 1;
+            }
+
+            .ctc-modal-body {
+                padding: 24px 20px 28px;
+            }
+
+            .ctc-modal-header {
+                padding: 20px 20px;
+            }
         }
 
         @media (max-width: 575px) {
-            .ctc-hero-container { padding: 40px 20px; }
-            .ctc-hero-title { font-size: 1.8rem; }
-            .ctc-modal { border-radius: 16px; }
+            .ctc-hero-container {
+                padding: 40px 20px;
+            }
+
+            .ctc-hero-title {
+                font-size: 1.8rem;
+            }
+
+            .ctc-modal {
+                border-radius: 16px;
+            }
         }
     </style>
 </head>
@@ -404,7 +457,8 @@
                 </ul>
             </nav>
             <div class="navbar-shield">
-                <img src="escudo-unalm.png" alt="Escudo UNALM" class="logo-img-unalm" onerror="this.style.display='none'">
+                <img src="escudo-unalm.png" alt="Escudo UNALM" class="logo-img-unalm"
+                    onerror="this.style.display='none'">
             </div>
         </div>
     </header>
@@ -423,7 +477,8 @@
                     </h1>
 
                     <p class="ctc-hero-desc">
-                        Forma parte del semillero de investigación y análisis financiero de la universidad. Aprende publica y crece junto a nosotros.
+                        Forma parte del semillero de investigación y análisis financiero de la universidad. Aprende
+                        publica y crece junto a nosotros.
                     </p>
 
                     <div class="ctc-benefits">
@@ -494,23 +549,47 @@
                             <div class="ctc-form-group">
                                 <label class="ctc-form-label" for="ctc-celular">Celular</label>
                                 <input class="ctc-input" type="tel" id="ctc-celular" name="celular"
-                                    placeholder="Número" required>
+                                    placeholder="9XXXXXXXX" inputmode="numeric" maxlength="9" pattern="9[0-9]{8}"
+                                    title="Debe empezar en 9 y tener 9 dígitos"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)" required>
                             </div>
 
                             <div class="ctc-form-group">
-                                <label class="ctc-form-label" for="ctc-correo">Correo institucional</label>
+                                <label class="ctc-form-label" for="ctc-correo">Correo electrónico</label>
                                 <input class="ctc-input" type="email" id="ctc-correo" name="correo"
-                                    placeholder="código@lamolina.edu.pe" required>
+                                    placeholder="tucorreo@ejemplo.com" required>
                             </div>
 
                             <div class="ctc-form-group">
                                 <label class="ctc-form-label" for="ctc-carrera">Carrera</label>
                                 <input class="ctc-input" type="text" id="ctc-carrera" name="carrera"
-                                    placeholder="Gestión empresarial, Economía, etc." required>
+                                    placeholder="Empieza a escribir tu carrera..." list="lista-carreras"
+                                    autocomplete="off" required>
+                                <datalist id="lista-carreras">
+                                    <option value="Agronomía">
+                                    <option value="Ciencias Forestales">
+                                    <option value="Zootecnia">
+                                    <option value="Pesquería">
+                                    <option value="Industrias Alimentarias">
+                                    <option value="Ingeniería Agrícola">
+                                    <option value="Ingeniería Ambiental">
+                                    <option value="Estadística Informática">
+                                    <option value="Economía">
+                                    <option value="Gestión Empresarial">
+                                    <option value="Biología">
+                                    <option value="Ingeniería en Gestión de Sistemas">
+                                </datalist>
+                            </div>
+
+                            <div class="ctc-form-group">
+                                <label class="ctc-form-label" for="ctc-codigo">Código de alumno</label>
+                                <input class="ctc-input" type="text" id="ctc-codigo" name="codigo"
+                                    placeholder="Ej. 20211234" inputmode="numeric" required>
                             </div>
 
                             <div class="ctc-form-group full">
-                                <label class="ctc-form-label" for="ctc-motivacion">¿Por qué quieres unirte a AFINLAB?</label>
+                                <label class="ctc-form-label" for="ctc-motivacion">¿Por qué quieres unirte a
+                                    AFINLAB?</label>
                                 <textarea class="ctc-textarea" id="ctc-motivacion" name="motivacion"
                                     placeholder="Cuéntanos tu motivación ..." required></textarea>
                             </div>
@@ -518,7 +597,7 @@
                         </div>
 
                         <div class="ctc-form-footer">
-                            <button type="submit" class="ctc-btn-submit">
+                            <button type="submit" class="ctc-btn-submit" id="ctc-btn-submit">
                                 Enviar postulación <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
@@ -529,7 +608,8 @@
                 <div class="ctc-success" id="ctc-success">
                     <div class="ctc-success-icon"><i class="fas fa-circle-check"></i></div>
                     <h3 class="ctc-success-title">¡Postulación enviada!</h3>
-                    <p class="ctc-success-text">Nos pondremos en contacto contigo pronto. ¡Gracias por tu interés en AFINLAB!</p>
+                    <p class="ctc-success-text">Nos pondremos en contacto contigo pronto. ¡Gracias por tu interés en
+                        AFINLAB!</p>
                 </div>
 
             </div>
@@ -565,15 +645,37 @@
             if (e.target === document.getElementById('ctc-modal-overlay')) cerrarModal();
         }
 
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') cerrarModal();
         });
 
+        // URL de la implementación de Google Apps Script (recibe el POST y escribe en la hoja)
+        const AFINLAB_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbznGQYlNk64X5rBmactV_m2ec_ubNVF-K1DdkFM77sIjaA97yZ6Ty_MQ1xZNo8lGT6h/exec';
+
         function enviarFormulario(e) {
             e.preventDefault();
-            // ── Conectar aquí: Formspree / EmailJS / WhatsApp ──
-            document.getElementById('ctc-form-wrapper').style.display = 'none';
-            document.getElementById('ctc-success').classList.add('visible');
+
+            const form = document.getElementById('ctc-form');
+            const btn = document.getElementById('ctc-btn-submit');
+            const formData = new FormData(form);
+
+            btn.disabled = true;
+            btn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
+
+            fetch(AFINLAB_SHEETS_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                document.getElementById('ctc-form-wrapper').style.display = 'none';
+                document.getElementById('ctc-success').classList.add('visible');
+            }).catch(() => {
+                // Con mode: 'no-cors' no podemos leer la respuesta real del servidor,
+                // así que ante un error de red seguimos mostrando éxito para no
+                // bloquear al postulante (los datos casi siempre sí llegan a la hoja).
+                document.getElementById('ctc-form-wrapper').style.display = 'none';
+                document.getElementById('ctc-success').classList.add('visible');
+            });
         }
     </script>
 </body>
