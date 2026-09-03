@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Insights - AFINLAB | Applied Finance Learning Lab</title>
+    <meta name="description"
+        content="Financial Insights, la revista digital de AFINLAB que convierte el análisis financiero del Learning Lab en un producto editorial para toda la comunidad.">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=4">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="navbar" id="main-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo" id="logo-link">
+                <img src="logo.png" alt="AFINLAB Logo" class="logo-img-afinlab" id="logo-img-afinlab"
+                    onerror="this.style.display='none'">
+            </a>
+
+            <button class="navbar-toggle" id="menu-toggle-btn" aria-label="Abrir Menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="navbar-nav" id="navbar-menu-nav">
+                <ul class="navbar-menu" id="nav-menu-list">
+                    <li><a href="index.html#sobre-nosotros" class="navbar-link">Sobre nosotros</a></li>
+                    <li><a href="equipo.html" class="navbar-link">Equipo</a></li>
+                    <li><a href="proyectos.html" class="navbar-link navbar-link--active">Proyectos</a></li>
+                    <li><a href="investigaciones.html" class="navbar-link">Publicaciones</a></li>
+                    <li><a href="eventos.html" class="navbar-link">Eventos</a></li>
+                    <li><a href="recursos.html" class="navbar-link">Recursos</a></li>
+                    <li><a href="contacto.html" class="navbar-link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-shield">
+                <img src="escudo-unalm.png" alt="Escudo UNALM" class="logo-img-unalm"
+                    onerror="this.style.display='none'">
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- SECCIÓN FINANCIAL INSIGHTS -->
+        <section class="fi-section" id="financial-insights">
+            <div class="fi-container">
+
+                <!-- Barra superior: volver + breadcrumb -->
+                <div class="sesiones-topbar">
+                    <a href="proyectos.html" class="sesiones-back">
+                        <span aria-hidden="true">&lsaquo;</span> Volver a Proyectos
+                    </a>
+                    <nav class="sesiones-breadcrumb" aria-label="breadcrumb">
+                        <a href="proyectos.html">Proyectos</a>
+                        <span aria-hidden="true">/</span>
+                        <span>Financial Insights</span>
+                    </nav>
+                </div>
+
+                <!-- Layout: contenido principal | sidebar revista -->
+                <div class="fi-layout">
+
+                    <!-- COLUMNA PRINCIPAL -->
+                    <div class="fi-main">
+                        <span class="sesiones-label">PROYECTO 3</span>
+                        <h1 class="fi-title">Financial Insights: Una revista de AFINLAB</h1>
+                        <p class="fi-subtitle">Convirtiendo el análisis financiero del Learning Lab en un producto editorial digerible para toda la comunidad AFINLAB.</p>
+
+                        <!-- Selector de edición -->
+                        <div class="fi-edition-tags">
+                            <span class="fi-edition-tag fi-edition-tag--active">2026 - II</span>
+                            <span class="fi-edition-tag fi-edition-tag--upcoming">Próxima edición</span>
+                        </div>
+
+                        <!-- 3 tarjetas: Propósito / Público objetivo / Resultado -->
+                        <div class="fi-cards-grid">
+                            <div class="fi-info-card">
+                                <span class="fi-info-card__label">Propósito</span>
+                                <p class="fi-info-card__text">Convertir el análisis financiero del Learning Lab en un producto editorial digerible.</p>
+                            </div>
+                            <div class="fi-info-card">
+                                <span class="fi-info-card__label">Público objetivo</span>
+                                <p class="fi-info-card__text">Comunidad universitaria, sector empresarial y entusiastas de las finanzas.</p>
+                            </div>
+                            <div class="fi-info-card">
+                                <span class="fi-info-card__label">Resultado</span>
+                                <p class="fi-info-card__text">Publicación semestral que fortalece la identidad, visibilidad e impacto de AFINLAB.</p>
+                            </div>
+                        </div>
+
+                        <!-- Badges de periodicidad y formato -->
+                        <div class="fi-meta-badges">
+                            <span class="fi-meta-badge">Periodicidad: Semestral</span>
+                            <span class="fi-meta-badge">Formato: Digital (PDF)</span>
+                        </div>
+
+                        <p class="fi-description">
+                            Cada edición reúne hallazgos de las Sesiones Learning Lab, entrevistas y artículos de opinión, diseñados para acercar el análisis financiero a un público amplio. Se publica una nueva edición por ciclo académico.
+                        </p>
+                    </div>
+
+                    <!-- COLUMNA SIDEBAR: tarjeta de la revista -->
+                    <aside class="fi-sidebar">
+                        <div class="fi-magazine-card">
+                            <div class="fi-magazine-cover">
+                                <img src="financial-insights-portada.png" alt="Portada Financial Insights"
+                                    class="fi-magazine-cover__img"
+                                    onerror="this.style.display='none'; this.parentElement.classList.add('fi-magazine-cover--empty');">
+                                <span class="fi-magazine-cover__placeholder">Portada de la edición actual</span>
+                            </div>
+
+                            <span class="fi-magazine-card__title">Financial Insights</span>
+                            <span class="fi-magazine-card__subtitle">Una revista de AFINLAB</span>
+
+                            <span class="fi-magazine-card__issue">Nº 01 - 2026</span>
+                        </div>
+
+                        <a href="#" class="fi-download-btn" onclick="showSectionAlert('Descarga de Financial Insights')">
+                            Descargar edición actual <span aria-hidden="true">&darr;</span>
+                        </a>
+                    </aside>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AFINLAB Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                <div>
+                    <span class="footer-brand-title">AFINLAB</span><br>
+                    <span class="footer-brand-sub">Semillero de Investigación UNALM</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
