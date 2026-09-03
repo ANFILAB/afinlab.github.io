@@ -48,6 +48,44 @@ document.addEventListener('DOMContentLoaded', () => {
             el.classList.add('active');
         });
     }, 100);
+
+    // 3. POP-UP MODAL CONVOCATORIA (FLYER)
+    const convoModal = document.getElementById('convo-popup-modal');
+    const convoCloseBtn = document.getElementById('convo-popup-close');
+
+    if (convoModal) {
+        // Mostrar pop-up automáticamente al cargar la página
+        setTimeout(() => {
+            convoModal.classList.add('active');
+        }, 400);
+
+        // Función para cerrar el pop-up
+        const closeConvoModal = () => {
+            convoModal.classList.remove('active');
+        };
+
+        // Cerrar al hacer clic en la 'X'
+        if (convoCloseBtn) {
+            convoCloseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeConvoModal();
+            });
+        }
+
+        // Cerrar al hacer clic en el fondo oscuro exterior
+        convoModal.addEventListener('click', (e) => {
+            if (e.target === convoModal) {
+                closeConvoModal();
+            }
+        });
+
+        // Cerrar con la tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && convoModal.classList.contains('active')) {
+                closeConvoModal();
+            }
+        });
+    }
 });
 
 // 3. FRIENDLY ALERTS FOR OTHER MENUS (PLACEHOLDERS AS REQUESTED)
