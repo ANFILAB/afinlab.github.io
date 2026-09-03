@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos - AFINLAB | Applied Finance Learning Lab</title>
+    <meta name="description"
+        content="Iniciativas de investigación aplicada desarrolladas por AFINLAB, semillero de la Universidad Nacional Agraria La Molina.">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=3">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ============================================================
+           MASCOTA FLOTANTE — ENCUESTA "¿QUÉ PROYECTO TE GUSTÓ MÁS?"
+           ============================================================ */
+
+        .afl-mascota-wrap {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 5000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 14px;
+            font-family: var(--font-sans);
+        }
+
+        /* Botón/avatar flotante */
+        .afl-mascota-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0f4c3a 0%, #1e6b45 55%, #2fa356 100%);
+            border: 3px solid #ffffff;
+            box-shadow: 0 10px 28px rgba(15, 76, 58, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: aflFloat 2.6s ease-in-out infinite;
+        }
+
+        .afl-mascota-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 14px 34px rgba(15, 76, 58, 0.45);
+        }
+
+        @keyframes aflFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .afl-mascota-btn.afl-hidden-btn {
+            display: none;
+        }
+
+        /* Burbuja de diálogo */
+        .afl-bubble {
+            width: 300px;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            padding: 18px 18px 16px;
+            opacity: 0;
+            transform: translateY(12px) scale(0.96);
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .afl-bubble.afl-open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .afl-bubble-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .afl-bubble-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0f4c3a, #2fa356);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .afl-bubble-text {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #16283F;
+            line-height: 1.4;
+        }
+
+        .afl-bubble-close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 2px 4px;
+            flex-shrink: 0;
+        }
+
+        .afl-bubble-close:hover {
+            color: #6b7280;
+        }
+
+        .afl-opciones {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .afl-opcion-btn {
+            text-align: left;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #16283F;
+            background: #eef7f1;
+            border: 1.5px solid rgba(31, 110, 67, 0.25);
+            border-radius: 10px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+        }
+
+        .afl-opcion-btn:hover {
+            background: #dcf0e4;
+            border-color: rgba(31, 110, 67, 0.5);
+            transform: translateX(2px);
+        }
+
+        .afl-opcion-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Estado de agradecimiento */
+        .afl-gracias {
+            display: none;
+            text-align: center;
+            padding: 8px 4px 4px;
+        }
+
+        .afl-gracias.afl-visible {
+            display: block;
+        }
+
+        .afl-gracias i {
+            font-size: 1.8rem;
+            color: #1a6e44;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .afl-gracias p {
+            font-size: 0.82rem;
+            color: #374151;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        @media (max-width: 575px) {
+            .afl-mascota-wrap {
+                right: 16px;
+                bottom: 16px;
+            }
+            .afl-bubble {
+                width: calc(100vw - 64px);
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="navbar" id="main-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo" id="logo-link">
+                <img src="logo.png" alt="AFINLAB Logo" class="logo-img-afinlab" id="logo-img-afinlab"
+                    onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 width=%22120%22 height=%2240%22><text x=%220%22 y=%2226%22 font-family=%22sans-serif%22 font-size=%2220%22 font-weight=%22bold%22 fill=%22%2316283F%22>AFINLAB</text></svg>'">
+            </a>
+
+            <button class="navbar-toggle" id="menu-toggle-btn" aria-label="Abrir Menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="navbar-nav" id="navbar-menu-nav">
+                <ul class="navbar-menu" id="nav-menu-list">
+                    <li><a href="index.html#sobre-nosotros" class="navbar-link">Sobre nosotros</a></li>
+                    <li><a href="equipo.html" class="navbar-link">Equipo</a></li>
+                    <li><a href="proyectos.html" class="navbar-link navbar-link--active">Proyectos</a></li>
+                    <li><a href="investigaciones.html" class="navbar-link">Publicaciones</a></li>
+                    <li><a href="eventos.html" class="navbar-link">Eventos</a></li>
+                    <li><a href="recursos.html" class="navbar-link">Recursos</a></li>
+                    <li><a href="contacto.html" class="navbar-link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-shield">
+                <img src="escudo-unalm.png" alt="Escudo UNALM" class="logo-img-unalm"
+                    onerror="this.style.display='none'">
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- SECCIÓN PROYECTOS -->
+        <section class="proyectos-section" id="proyectos">
+            <div class="proyectos-container">
+
+                <!-- Encabezado -->
+                <div class="proyectos-header">
+                    <h1 class="proyectos-title">PROYECTOS</h1>
+                    <p class="proyectos-subtitle">Iniciativas de investigación aplicada desarrolladas por AFINLAB</p>
+                </div>
+
+                <!-- Grid 3x2 de tarjetas -->
+                <div class="proyectos-grid">
+
+                    <!-- Card 1: Datos -->
+                    <div class="proyecto-card" id="card-datos">
+                        <div class="proyecto-card__header">
+                            <h3 class="proyecto-card__category">Datos</h3>
+                        </div>
+                        <div class="proyecto-card__image">
+                            <img src="imagen1.png" alt="Datos" class="proyecto-card__img">
+                        </div>
+                        <div class="proyecto-card__body">
+                            <p class="proyecto-card__name">Gestión de la Base de Datos</p>
+                            <a href="gestion-base-de-datos.html" class="proyecto-card__link">
+                                Ver más <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Análisis Sectorial -->
+                    <div class="proyecto-card" id="card-analisis">
+                        <div class="proyecto-card__header">
+                            <h3 class="proyecto-card__category">Análisis Sectorial</h3>
+                        </div>
+                        <div class="proyecto-card__image">
+                            <img src="imagen2.png" alt="Análisis Sectorial" class="proyecto-card__img">
+                        </div>
+                        <div class="proyecto-card__body">
+                            <p class="proyecto-card__name">Sesiones Learning Lab</p>
+                            <a href="sesiones-learning-lab.html" class="proyecto-card__link">
+                                Ver más <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Publicación -->
+                    <div class="proyecto-card" id="card-publicacion">
+                        <div class="proyecto-card__header">
+                            <h3 class="proyecto-card__category">Publicación</h3>
+                        </div>
+                        <div class="proyecto-card__image">
+                            <img src="imagen3.png" alt="Publicación" class="proyecto-card__img">
+                        </div>
+                        <div class="proyecto-card__body">
+                            <p class="proyecto-card__name">Financial Insights</p>
+                            <a href="financial-insights.html" class="proyecto-card__link">
+                                Ver más <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Difusión -->
+                    <div class="proyecto-card" id="card-difusion">
+                        <div class="proyecto-card__header">
+                            <h3 class="proyecto-card__category">Difusión</h3>
+                        </div>
+                        <div class="proyecto-card__image">
+                            <img src="imagen4.png" alt="Difusión" class="proyecto-card__img">
+                        </div>
+                        <div class="proyecto-card__body">
+                            <p class="proyecto-card__name">Difusión en Redes Sociales</p>
+                            <a href="redes-sociales.html" class="proyecto-card__link">
+                                Ver más <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Evento -->
+                    <div class="proyecto-card" id="card-evento">
+                        <div class="proyecto-card__header">
+                            <h3 class="proyecto-card__category">Evento</h3>
+                        </div>
+                        <div class="proyecto-card__image">
+                            <img src="imagen5.png" alt="Evento" class="proyecto-card__img">
+                        </div>
+                        <div class="proyecto-card__body">
+                            <p class="proyecto-card__name">Applied Finance Day</p>
+                            <a href="applied-finance-day.html" class="proyecto-card__link">
+                                Ver más <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Investigación -->
+                    <div class="proyecto-card" id="card-investigacion">
+                        <div class="proyecto-card__header">
+                            <h3 class="proyecto-card__category">Investigación</h3>
+                        </div>
+                        <div class="proyecto-card__image">
+                            <img src="imagen6.png" alt="Investigación" class="proyecto-card__img">
+                        </div>
+                        <div class="proyecto-card__body">
+                            <p class="proyecto-card__name">Desarrollo de investigaciones</p>
+                            <a href="investigaciones.html" class="proyecto-card__link">
+                                Ver más <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AFINLAB Logo" class="footer-logo-img"
+                    onerror="this.style.display='none'">
+                <div>
+                    <span class="footer-brand-title">AFINLAB</span><br>
+                    <span class="footer-brand-sub">Semillero de Investigación UNALM</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MASCOTA: ENCUESTA DE PROYECTOS ==================== -->
+    <div class="afl-mascota-wrap" id="afl-mascota-wrap">
+
+        <!-- Burbuja de diálogo -->
+        <div class="afl-bubble" id="afl-bubble">
+
+            <div class="afl-bubble-header">
+                <div class="afl-bubble-avatar">🌱</div>
+                <span class="afl-bubble-text">¿Cuál proyecto te gustó más?</span>
+                <button class="afl-bubble-close" id="afl-bubble-close" aria-label="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="afl-opciones" id="afl-opciones">
+                <button class="afl-opcion-btn" data-proyecto="Gestión de Base de Datos">Gestión de Base de Datos</button>
+                <button class="afl-opcion-btn" data-proyecto="Sesiones Learning Lab">Sesiones Learning Lab</button>
+                <button class="afl-opcion-btn" data-proyecto="Financial Insights">Financial Insights</button>
+                <button class="afl-opcion-btn" data-proyecto="Difusión en Redes Sociales">Difusión en Redes Sociales</button>
+                <button class="afl-opcion-btn" data-proyecto="Applied Finance Day">Applied Finance Day</button>
+                <button class="afl-opcion-btn" data-proyecto="Desarrollo de Investigaciones">Desarrollo de Investigaciones</button>
+            </div>
+
+            <div class="afl-gracias" id="afl-gracias">
+                <i class="fas fa-circle-check"></i>
+                <p>¡Gracias por tu voto! 🌱</p>
+            </div>
+
+        </div>
+
+        <!-- Botón/avatar flotante -->
+        <button class="afl-mascota-btn" id="afl-mascota-btn" aria-label="Abrir encuesta de proyectos">🌱</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        (function () {
+            const ENDPOINT = 'https://script.google.com/macros/s/AKfycbznGQYlNk64X5rBmactV_m2ec_ubNVF-K1DdkFM77sIjaA97yZ6Ty_MQ1xZNo8lGT6h/exec';
+            const VOTE_FLAG = 'afinlab_voto_proyecto_hecho';
+
+            const btn = document.getElementById('afl-mascota-btn');
+            const bubble = document.getElementById('afl-bubble');
+            const closeBtn = document.getElementById('afl-bubble-close');
+            const opciones = document.getElementById('afl-opciones');
+            const gracias = document.getElementById('afl-gracias');
+            const wrap = document.getElementById('afl-mascota-wrap');
+
+            const yaVoto = localStorage.getItem(VOTE_FLAG) === '1';
+
+            function abrirBurbuja() {
+                bubble.classList.add('afl-open');
+            }
+
+            function cerrarBurbuja() {
+                bubble.classList.remove('afl-open');
+            }
+
+            btn.addEventListener('click', () => {
+                if (bubble.classList.contains('afl-open')) {
+                    cerrarBurbuja();
+                } else {
+                    abrirBurbuja();
+                }
+            });
+
+            closeBtn.addEventListener('click', cerrarBurbuja);
+
+            if (yaVoto) {
+                // Ya votó antes en este navegador: no molestamos de nuevo,
+                // pero dejamos el botón disponible por si quiere ver el mensaje.
+                opciones.style.display = 'none';
+                gracias.classList.add('afl-visible');
+            } else {
+                // Primera visita: aparece sola después de unos segundos.
+                setTimeout(abrirBurbuja, 3500);
+
+                document.querySelectorAll('.afl-opcion-btn').forEach(function (b) {
+                    b.addEventListener('click', function () {
+                        const proyecto = b.getAttribute('data-proyecto');
+
+                        document.querySelectorAll('.afl-opcion-btn').forEach(x => x.disabled = true);
+
+                        const formData = new FormData();
+                        formData.append('votoProyecto', proyecto);
+
+                        fetch(ENDPOINT, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            body: formData
+                        }).finally(() => {
+                            localStorage.setItem(VOTE_FLAG, '1');
+                            opciones.style.display = 'none';
+                            gracias.classList.add('afl-visible');
+                            setTimeout(cerrarBurbuja, 2200);
+                        });
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
