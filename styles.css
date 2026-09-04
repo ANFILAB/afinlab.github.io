@@ -509,11 +509,11 @@ main {
 }
 
 /* Botón llamativo e interactivo POSTULA HOY con animación de movimiento */
+
 .popup-modal-cta-btn {
     position: absolute;
     bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 18px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -527,7 +527,7 @@ main {
     letter-spacing: 0.7px;
     text-transform: uppercase;
     text-decoration: none;
-    border-radius: 10px; /* Cuadro con bordes redondeados */
+    border-radius: 10px;
     border: 1.5px solid rgba(255, 255, 255, 0.9);
     box-shadow: 0 6px 18px rgba(5, 150, 105, 0.45), 0 0 0 0 rgba(16, 185, 129, 0.6);
     z-index: 5;
@@ -539,7 +539,7 @@ main {
 
 .popup-modal-cta-btn:hover {
     background: linear-gradient(135deg, #059669 0%, #047857 100%);
-    transform: translateX(-50%) scale(1.06);
+    transform: scale(1.06);
     box-shadow: 0 10px 24px rgba(5, 150, 105, 0.65);
     border-color: #ffffff;
     animation: none;
@@ -557,23 +557,23 @@ main {
 /* Animación de movimiento / pulso para captar la atención */
 @keyframes ctaAttentionPulse {
     0% {
-        transform: translateX(-50%) translateY(0) scale(1);
+        transform: translateY(0) scale(1);
         box-shadow: 0 5px 16px rgba(5, 150, 105, 0.4), 0 0 0 0 rgba(16, 185, 129, 0.7);
     }
     20% {
-        transform: translateX(-50%) translateY(-4px) scale(1.04);
+        transform: translateY(-4px) scale(1.04);
         box-shadow: 0 10px 22px rgba(5, 150, 105, 0.55), 0 0 0 6px rgba(16, 185, 129, 0.22);
     }
     35% {
-        transform: translateX(-50%) translateY(-1px) scale(1.02);
+        transform: translateY(-1px) scale(1.02);
         box-shadow: 0 6px 18px rgba(5, 150, 105, 0.45), 0 0 0 11px rgba(16, 185, 129, 0);
     }
     50% {
-        transform: translateX(-50%) translateY(-3px) scale(1.03);
+        transform: translateY(-3px) scale(1.03);
         box-shadow: 0 9px 20px rgba(5, 150, 105, 0.5), 0 0 0 0 rgba(16, 185, 129, 0);
     }
     70%, 100% {
-        transform: translateX(-50%) translateY(0) scale(1);
+        transform: translateY(0) scale(1);
         box-shadow: 0 5px 16px rgba(5, 150, 105, 0.4), 0 0 0 0 rgba(16, 185, 129, 0);
     }
 }
@@ -752,6 +752,10 @@ main {
     height: 48px;
     width: auto;
     object-fit: contain;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 6px 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .footer-brand-title {

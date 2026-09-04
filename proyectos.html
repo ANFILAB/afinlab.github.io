@@ -23,7 +23,7 @@
 
     <style>
         /* ============================================================
-           MASCOTA FLOTANTE — ENCUESTA "¿QUÉ PROYECTO TE GUSTÓ MÁS?"
+           MASCOTA FLOTANTE — ENCUESTA "¿QUÉ PROYECTOS TE GUSTARON MÁS?"
            ============================================================ */
 
         .afl-mascota-wrap {
@@ -92,7 +92,7 @@
             display: flex;
             align-items: flex-start;
             gap: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
         }
 
         .afl-bubble-avatar {
@@ -129,36 +129,84 @@
             color: #6b7280;
         }
 
+        .afl-bubble-hint {
+            font-size: 0.7rem;
+            color: #9ca3af;
+            margin: 0 0 12px;
+        }
+
+        /* ── Casillas (checkboxes) de proyectos ── */
         .afl-opciones {
             display: flex;
             flex-direction: column;
             gap: 8px;
+            margin-bottom: 12px;
         }
 
-        .afl-opcion-btn {
-            text-align: left;
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #16283F;
+        .afl-opcion-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             background: #eef7f1;
             border: 1.5px solid rgba(31, 110, 67, 0.25);
             border-radius: 10px;
             padding: 10px 12px;
             cursor: pointer;
-            transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+            transition: background 0.15s ease, border-color 0.15s ease;
         }
 
-        .afl-opcion-btn:hover {
+        .afl-opcion-item:hover {
             background: #dcf0e4;
             border-color: rgba(31, 110, 67, 0.5);
-            transform: translateX(2px);
         }
 
-        .afl-opcion-btn:disabled {
+        .afl-opcion-item.afl-disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
+        }
+
+        .afl-opcion-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #1F6E43;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .afl-opcion-item input[type="checkbox"]:disabled {
+            cursor: not-allowed;
+        }
+
+        .afl-opcion-item span {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #16283F;
+        }
+
+        /* ── Botón confirmar ── */
+        .afl-confirmar-btn {
+            width: 100%;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(90deg, #0f4c3a, #1e6b45);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+        }
+
+        .afl-confirmar-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .afl-confirmar-btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
         }
 
         /* Estado de agradecimiento */
@@ -373,20 +421,42 @@
 
             <div class="afl-bubble-header">
                 <div class="afl-bubble-avatar">🌱</div>
-                <span class="afl-bubble-text">¿Cuál proyecto te gustó más?</span>
+                <span class="afl-bubble-text">¿Qué proyectos te gustaron más?</span>
                 <button class="afl-bubble-close" id="afl-bubble-close" aria-label="Cerrar">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
 
+            <p class="afl-bubble-hint">Elige entre 1 y 3 opciones</p>
+
             <div class="afl-opciones" id="afl-opciones">
-                <button class="afl-opcion-btn" data-proyecto="Gestión de Base de Datos">Gestión de Base de Datos</button>
-                <button class="afl-opcion-btn" data-proyecto="Sesiones Learning Lab">Sesiones Learning Lab</button>
-                <button class="afl-opcion-btn" data-proyecto="Financial Insights">Financial Insights</button>
-                <button class="afl-opcion-btn" data-proyecto="Difusión en Redes Sociales">Difusión en Redes Sociales</button>
-                <button class="afl-opcion-btn" data-proyecto="Applied Finance Day">Applied Finance Day</button>
-                <button class="afl-opcion-btn" data-proyecto="Desarrollo de Investigaciones">Desarrollo de Investigaciones</button>
+                <label class="afl-opcion-item">
+                    <input type="checkbox" class="afl-check" value="Gestión de Base de Datos">
+                    <span>Gestión de Base de Datos</span>
+                </label>
+                <label class="afl-opcion-item">
+                    <input type="checkbox" class="afl-check" value="Sesiones Learning Lab">
+                    <span>Sesiones Learning Lab</span>
+                </label>
+                <label class="afl-opcion-item">
+                    <input type="checkbox" class="afl-check" value="Financial Insights">
+                    <span>Financial Insights</span>
+                </label>
+                <label class="afl-opcion-item">
+                    <input type="checkbox" class="afl-check" value="Difusión en Redes Sociales">
+                    <span>Difusión en Redes Sociales</span>
+                </label>
+                <label class="afl-opcion-item">
+                    <input type="checkbox" class="afl-check" value="Applied Finance Day">
+                    <span>Applied Finance Day</span>
+                </label>
+                <label class="afl-opcion-item">
+                    <input type="checkbox" class="afl-check" value="Desarrollo de Investigaciones">
+                    <span>Desarrollo de Investigaciones</span>
+                </label>
             </div>
+
+            <button class="afl-confirmar-btn" id="afl-confirmar-btn" disabled>Confirmar voto</button>
 
             <div class="afl-gracias" id="afl-gracias">
                 <i class="fas fa-circle-check"></i>
@@ -408,9 +478,11 @@
             const btn = document.getElementById('afl-mascota-btn');
             const bubble = document.getElementById('afl-bubble');
             const closeBtn = document.getElementById('afl-bubble-close');
-            const opciones = document.getElementById('afl-opciones');
+            const opcionesWrap = document.getElementById('afl-opciones');
+            const confirmarBtn = document.getElementById('afl-confirmar-btn');
             const gracias = document.getElementById('afl-gracias');
-            const wrap = document.getElementById('afl-mascota-wrap');
+            const hint = document.querySelector('.afl-bubble-hint');
+            const checks = document.querySelectorAll('.afl-check');
 
             const yaVoto = localStorage.getItem(VOTE_FLAG) === '1';
 
@@ -433,33 +505,55 @@
             closeBtn.addEventListener('click', cerrarBurbuja);
 
             if (yaVoto) {
-                // Ya votó antes en este navegador: no molestamos de nuevo,
-                // pero dejamos el botón disponible por si quiere ver el mensaje.
-                opciones.style.display = 'none';
+                // Ya votó antes en este navegador: no molestamos de nuevo.
+                opcionesWrap.style.display = 'none';
+                confirmarBtn.style.display = 'none';
+                if (hint) hint.style.display = 'none';
                 gracias.classList.add('afl-visible');
             } else {
                 // Primera visita: aparece sola después de unos segundos.
                 setTimeout(abrirBurbuja, 3500);
 
-                document.querySelectorAll('.afl-opcion-btn').forEach(function (b) {
-                    b.addEventListener('click', function () {
-                        const proyecto = b.getAttribute('data-proyecto');
+                // Límite de selección: entre 1 y 3
+                checks.forEach(function (chk) {
+                    chk.addEventListener('change', function () {
+                        const marcados = [...checks].filter(c => c.checked).length;
 
-                        document.querySelectorAll('.afl-opcion-btn').forEach(x => x.disabled = true);
-
-                        const formData = new FormData();
-                        formData.append('votoProyecto', proyecto);
-
-                        fetch(ENDPOINT, {
-                            method: 'POST',
-                            mode: 'no-cors',
-                            body: formData
-                        }).finally(() => {
-                            localStorage.setItem(VOTE_FLAG, '1');
-                            opciones.style.display = 'none';
-                            gracias.classList.add('afl-visible');
-                            setTimeout(cerrarBurbuja, 2200);
+                        checks.forEach(function (c) {
+                            const item = c.closest('.afl-opcion-item');
+                            const bloquear = marcados >= 3 && !c.checked;
+                            c.disabled = bloquear;
+                            if (item) item.classList.toggle('afl-disabled', bloquear);
                         });
+
+                        confirmarBtn.disabled = marcados < 1;
+                    });
+                });
+
+                confirmarBtn.addEventListener('click', function () {
+                    const seleccionados = [...checks].filter(c => c.checked).map(c => c.value);
+                    if (seleccionados.length < 1) return;
+
+                    confirmarBtn.disabled = true;
+                    confirmarBtn.textContent = 'Enviando...';
+                    checks.forEach(c => c.disabled = true);
+
+                    const formData = new FormData();
+                    seleccionados.forEach(function (proyecto) {
+                        formData.append('votoProyecto', proyecto);
+                    });
+
+                    fetch(ENDPOINT, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: formData
+                    }).finally(() => {
+                        localStorage.setItem(VOTE_FLAG, '1');
+                        opcionesWrap.style.display = 'none';
+                        confirmarBtn.style.display = 'none';
+                        if (hint) hint.style.display = 'none';
+                        gracias.classList.add('afl-visible');
+                        setTimeout(cerrarBurbuja, 2200);
                     });
                 });
             }
