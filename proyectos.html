@@ -36,6 +36,10 @@
             align-items: flex-end;
             gap: 14px;
             font-family: var(--font-sans);
+            /* Todo este contenedor es "transparente a los clics" por defecto.
+               Sin esto, el espacio invisible de la burbuja cerrada puede
+               tapar enlaces de las tarjetas de abajo en celular. */
+            pointer-events: none;
         }
 
         /* Botón/avatar flotante */
@@ -53,6 +57,8 @@
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             animation: aflFloat 2.6s ease-in-out infinite;
+            /* El botón sí debe recibir clics siempre, aunque su contenedor no. */
+            pointer-events: auto;
         }
 
         .afl-mascota-btn:hover {
@@ -85,6 +91,7 @@
         .afl-bubble.afl-open {
             opacity: 1;
             transform: translateY(0) scale(1);
+            /* Solo cuando está realmente abierta puede recibir clics. */
             pointer-events: auto;
         }
 
